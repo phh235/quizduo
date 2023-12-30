@@ -1,0 +1,25 @@
+<div class="container" data-aos="fade-up" ng-app="loginApp" ng-controller="loginController">
+  <br /><br /><br />
+  <h1 style="font-weight: 800">Đăng nhập</h1>
+  <div class="row">
+    <div class="col">
+      <form ng-submit="login()">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Tên đăng nhập</label>
+          <input type="text" class="form-control formCtrl" id="exampleInputEmail1" aria-describedby="emailHelp"
+            ng-model="user.username"
+          />
+        </div>
+        <label for="inputPassword5" class="form-label">Mật khẩu</label>
+        <input type="password" id="inputPassword5" class="form-control formCtrl" aria-describedby="passwordHelpBlock"
+          ng-model="user.password"
+        />
+        <div class="mb-3 form-check"></div>
+        <button type="submit" class="btn btn-primary" style="background-color: #58cc02;">
+          Đăng nhập
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="p-5"></div>
+</div>

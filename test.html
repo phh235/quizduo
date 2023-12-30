@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>CodeQuiz - Nền tảng học lập trình</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <!-- <link href="assets/img/favicon.ico" rel="icon"> -->
+    <link href="assets/img/0cecd302cf0bcd0f73d51768feff75fe.svg" rel="icon" />
+    <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+
+    <!-- Google Fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Nunito -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <!-- Angular JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"
+      integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- angular route -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.3/angular-route.min.js"
+      integrity="sha512-y1qD3hz/IAf8W4+/UMLZ+CN6LIoUGi7srWJ3r1R17Hid8x0yXe+1B5ZelkaL1Mjzedzu0Cg3HBvDG02SAgSzBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!-- <link href="assets/css/main.css" rel="stylesheet" /> -->
+
+    <!-- =======================================================
+  * Template Name: Flexor
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+    <!-- script cursor -->
+  </head>
+
+  <body ng-app="myApp" ng-controller="myControl">
+    <!-- <div class="cursor-dot" data-cursor-dot>
+      <img src="assets/img/0cecd302cf0bcd0f73d51768feff75fe.svg" alt="" width="30px" height="30px">
+    </div>
+    <div class="cursor-outline" data-cursor-outline></div> -->
+    <section id="topbar" class="d-flex align-items-center">
+      <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com"
+              style="font-size: 13px;">hoangaatrox23504@gmail.com</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4" style="font-size: 13px;"><span>+84 355 670 875</span></i>
+        </div>
+
+        <div class="cta d-none d-md-flex align-items-center">
+          <a href="#about" class="scrollto">Bắt đầu ngay</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+        <div class="logo">
+          <!-- <h1><a href="index.html">QuizMindset</a></h1> -->
+          <a href="#" class="d-flex align-items-center">
+            <img src="assets/img/0cecd302cf0bcd0f73d51768feff75fe.svg" alt="" />
+            <span style="font-weight: 900; font-size: 33px">CodeQuiz</span>
+          </a>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        </div>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li>
+              <a class="nav-link scrollto active" href="#!/home">Trang chủ</a>
+            </li>
+            <li><a class="nav-link scrollto" href="#!/subject">Môn học</a></li>
+            <li><a class="nav-link scrollto" href="#about">Giới thiệu</a></li>
+            <li><a class="nav-link scrollto" href="#services">Dịch vụ</a></li>
+            <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+            <li class="dropdown">
+              <a href="#!/account"
+                ><span>Tài khoản</span> <i class="bi bi-chevron-down"></i
+              ></a>
+              <ul>
+                <li><a href="#!/account/signIn">Đăng nhập</a></li>
+                <li><a href="#!/account/signUp">Đăng ký</a></li>
+                <li class="dropdown">
+                  <a href="#"
+                    ><span>Chức năng</span> <i class="bi bi-chevron-left"></i
+                  ></a>
+                  <ul style="left: auto; right: 100%">
+                    <li><a href="#!/account/forgot">Quên mật khẩu</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+      </div>
+    </header>
+    <!-- End Header -->
+    <!-- ng-view -->
+    <div class="container">
+        <div ng-show="loading" class="scrollto"></div>
+        <ng-view></ng-view>
+    </div>
+    <!-- End ng-view -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3 style="font-size: 34px; font-weight: 900; color: #58cc02">
+                CodeQuiz
+              </h3> 
+              <p>
+                Dĩ An, Bình Dương <br />
+                Việt Nam<br />
+                <strong>Điện thoại:</strong> +84 355 670 875<br />
+                <strong>Email:</strong> hoangaatrox23504@gmail.com<br />
+              </p>
+            </div>
+
+            <div class="col-lg-2 col-md-6 footer-links">
+              <h4>Liên kết hữu ích</h4>
+              <ul>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#!/home">Trang chủ</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#!/subject">Môn học</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Dịch vụ</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Terms of service</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Privacy policy</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Dịch vụ khác</h4>
+              <ul>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Web Design</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Web Development</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Product Management</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Marketing</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Graphic Design</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6 footer-newsletter">
+              <h4>Cập nhật tin tức cùng chúng tôi</h4>
+              <p>Tin tức về ngành công nghệ thông tin mới nhất.</p>
+              <form action="" method="post">
+                <input type="email" name="email" /><input
+                  type="submit"
+                  value="Đăng ký"
+                  style="cursor: none; font-weight: 700"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container d-lg-flex py-4">
+        <div class="me-lg-auto text-center text-lg-start">
+          <div class="copyright">
+            &copy; Copyright
+            <strong><span style="color: #58cc02">CodeQuiz</span></strong
+            >. All Rights Reserved
+          </div>
+          <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/ -->
+            Designed by
+            <a
+              href="https://facebook.com/phh235"
+              style="color: #58cc02; font-weight: 600"
+              >phh235</a
+            >
+          </div>
+        </div>
+        <div class="social-links text-center text-lg-right pt-3 pt-lg-0">
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center rounded-4"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/pageCtrl.js"></script>
+    <script src="assets/js/loginCtrl.js"></script>
+    <!-- <script>
+      const cursorDot = document.querySelector("[data-cursor-dot]");
+      const cursorOutline = document.querySelector("[data-cursor-outline]");
+      window.addEventListener("mousemove", function (e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        // cursorOutline.style.left = `${posX}px`;
+        // cursorOutline.style.top = `${posY}px`;
+
+        cursorOutline.animate(
+          {
+            left: `${posX}px`,
+            top: `${posY}px`,
+          },
+          { duration: 500, fill: "forwards" }
+        );
+      });
+    </script> -->
+  </body>
+</html>
