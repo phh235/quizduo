@@ -2406,7 +2406,6 @@ section {
   -webkit-box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.05),
     inset 1px 1px 0 rgba(0, 0, 0, 0.05);
 }
-
 /* Boilerplate */
 .btn-primary {
   all: unset;
