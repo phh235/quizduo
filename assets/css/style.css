@@ -39,6 +39,10 @@ body {
   /* cursor: none; */
   overflow-x: hidden;
 }
+/* ::selection {
+  background-color: #58cc02;
+  color: #fff;
+} */
 
 a {
   color: #58cc02;
@@ -690,14 +694,14 @@ section {
 .about .icon-boxes h4 {
   font-size: 18px;
   font-weight: 700;
-  color: #7f6d68;
+  color: #000;
   margin-bottom: 15px;
 }
 
 .about .icon-boxes h3 {
   font-size: 28px;
   font-weight: 700;
-  color: #554945;
+  color: #000;
   margin-bottom: 15px;
 }
 
@@ -736,11 +740,11 @@ section {
   margin-left: 85px;
   font-weight: 800;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .about .icon-box .title a {
-  color: #343a40;
+  color: #000;
   transition: 0.3s;
 }
 
@@ -751,7 +755,8 @@ section {
 .about .icon-box .description {
   margin-left: 85px;
   line-height: 24px;
-  font-size: 14px;
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .about .video-box {
