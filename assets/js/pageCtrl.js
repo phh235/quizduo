@@ -13,6 +13,9 @@ myApp.config(function ($routeProvider) {
     .when("/account", {
       templateUrl: "assets/html/account.html",
     })
+    // .when("/test", {
+    //   templateUrl: "assets/html/test.html",
+    // })
     .when("/account/signIn", {
       templateUrl: "assets/html/login.html",
     })
@@ -21,6 +24,9 @@ myApp.config(function ($routeProvider) {
     })
     .when("/account/forgot", {
       templateUrl: "assets/html/forgot.html",
+    })
+    .when("/account/change", {
+      templateUrl: "assets/html/changePass.html",
     })
     .otherwise({
       redirectTo: "/home",

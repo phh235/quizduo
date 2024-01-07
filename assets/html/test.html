@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      /* Boilerplate */
+      button {
+        all: unset;
+        display: inline-block;
+        padding: 20px;
+        color: #000;
+        font-family: "Lexend Deca";
+        cursor: pointer;
+        font-size: 25px;
+        border-radius: 17px;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+        transition: 0.2s;
+        background-color: #fff;
+      }
+
+      /* Important stuff below */
+      .button:hover {
+        background-color: #d9d9d9;
+      }
+
+      .button:focus {
+        border: 2px solid #3d3d3d;
+        background-color: #d9d9d9;
+      }
+      .questions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .btn-primary {
+        all: unset;
+        display: inline-block;
+        padding: 15px 20px;
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 17px;
+      }
+
+      /* Important stuff below */
+      .btn-primary {
+        background-color: #58cc02;
+        box-shadow: 0 5px 0 #58a700;
+      }
+
+      .btn-primary:active {
+        box-shadow: none;
+        transform: translateY(5px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="col">
+      <div class="card">
+        <div class="card-header" style="font-size: 25px; font-weight: 600">Score: 0/10</div>
+        <div class="card-body">
+          <div
+            class="row rounded-3 p-5 questions"
+            style="height: 39vh; font-size: 40px; font-family: Lexend Deca"
+          >
+            1. Có mấy loại Service?
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="row justify-content-center" style="height: 41vh">
+            <div class="col-md col-xs-12">
+              <button class="h-75 m-1 p-5 button w-75 text-center">3</button>
+            </div>
+            <div class="col-md col-xs-12">
+              <button class="h-75 m-1 p-5 button w-75 text-center">4</button>
+            </div>
+            <div class="col-md col-xs-12">
+              <button class="h-75 m-1 p-5 button w-75 text-center">1</button>
+            </div>
+            <div class="col-md col-xs-12">
+              <button class="h-75 m-1 p-5 button w-75 text-center">2</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end p-3">
+          <!-- <li class="page-item"><a class="page-link" href="#">Lùi lại</a></li> -->
+          <!-- <li class="page-item"><a class="page-link" href="#">Tiếp tục</a></li> -->
+          <button type="submit" class="btn btn-primary" style="background-color: #58cc02">
+            Tiếp tục
+          </button>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>

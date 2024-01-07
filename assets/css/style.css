@@ -950,14 +950,15 @@ section {
 # Values
 --------------------------------------------------------------*/
 .values .card {
-  border: 0;
-  padding: 160px 20px 20px 20px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 250px 20px 20px 20px;
   position: relative;
   width: 100%;
-  background-size: cover;
+  /* background-size: cover; */
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 15px;
+  
 }
 
 .values .card-body {
@@ -1236,10 +1237,7 @@ section {
   position: relative;
 }
 
-.portfolio-details
-  .portfolio-details-slider
-  .swiper-pagination
-  .swiper-pagination-bullet {
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
   background-color: #fff;
@@ -1247,10 +1245,7 @@ section {
   border: 1px solid #58cc02;
 }
 
-.portfolio-details
-  .portfolio-details-slider
-  .swiper-pagination
-  .swiper-pagination-bullet-active {
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #58cc02;
 }
 
@@ -2375,7 +2370,7 @@ section {
   color: #46a302;
 }
 
-.counts .count-box span { 
+.counts .count-box span {
   font-size: 40px;
   display: block;
   font-weight: 700;
@@ -2389,7 +2384,6 @@ section {
   font-size: 15px;
   font-weight: 700;
 }
-
 
 ::-webkit-scrollbar {
   width: 12px;
@@ -2409,8 +2403,7 @@ section {
   background-clip: padding-box;
   -webkit-border-radius: 100px;
   background-color: grey;
-  -webkit-box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.05),
-    inset 1px 1px 0 rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.05), inset 1px 1px 0 rgba(0, 0, 0, 0.05);
 }
 /* Boilerplate */
 .btn-primary {
@@ -2427,7 +2420,7 @@ section {
 /* Important stuff below */
 .btn-primary {
   background-color: #58cc02;
-  box-shadow: 0 5px 0 #58a700; 
+  box-shadow: 0 5px 0 #58a700;
 }
 
 .btn-primary:active {
