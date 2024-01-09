@@ -13,9 +13,18 @@ myApp.config(function ($routeProvider) {
     .when("/account", {
       templateUrl: "assets/html/account.html",
     })
-    // .when("/test", {
-    //   templateUrl: "assets/html/test.html",
-    // })
+    .when("/contact", {
+      templateUrl: "assets/html/contact.html",
+    })
+    .when("/services", {
+      templateUrl: "assets/html/services.html",
+    })
+    .when("/faq", {
+      templateUrl: "assets/html/faq.html",
+    })
+    .when("/about", {
+      templateUrl: "assets/html/about.html",
+    })
     .when("/account/signIn", {
       templateUrl: "assets/html/login.html",
     })
