@@ -1,4 +1,13 @@
 {
+  "name": "codequiz",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "json:server": "json-server --watch db/Student.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "devDependencies": {
     "@types/angular": "^1.8.9"
   }

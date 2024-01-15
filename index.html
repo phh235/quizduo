@@ -25,19 +25,10 @@
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <!-- Angular JS -->
     <script
@@ -53,22 +44,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet" />
-
-    <!-- =======================================================
-  * Template Name: Flexor
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-    <!-- script cursor -->
   </head>
 
-  <body ng-app="myApp" ng-controller="myControl">
+  <body ng-app="myApp" ng-controller="myCtrl">
     <!-- <div class="cursor-dot" data-cursor-dot>
       <img src="assets/img/0cecd302cf0bcd0f73d51768feff75fe.svg" alt="" width="30px" height="30px">
     </div>
@@ -103,7 +84,7 @@
         <nav id="navbar" class="navbar">
           <ul>
             <li>
-              <a class="nav-link scrollto active" href="#!/home">Trang chủ</a>
+              <a class="nav-link scrollto" href="#!/home">Trang chủ</a>
             </li>
             <li><a class="nav-link scrollto" href="#!/about">Giới thiệu</a></li>
             <li><a class="nav-link scrollto" href="#!/subject">Môn học</a></li>
@@ -111,16 +92,12 @@
             <li><a class="nav-link scrollto" href="#!/faq">Hỏi đáp</a></li>
             <li><a class="nav-link scrollto" href="#!/contact">Liên hệ</a></li>
             <li class="dropdown">
-              <a href="#!/account"
-                ><span>Tài khoản</span> <i class="bi bi-chevron-down"></i
-              ></a>
+              <a href="#!/account" class="nav-link"><span>Tài khoản</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="#!/account/signIn">Đăng nhập</a></li>
                 <li><a href="#!/account/signUp">Đăng ký</a></li>
                 <li class="dropdown">
-                  <a href="#"
-                    ><span>Chức năng</span> <i class="bi bi-chevron-left"></i
-                  ></a>
+                  <a href="#"><span>Chức năng</span> <i class="bi bi-chevron-left"></i></a>
                   <ul style="left: auto; right: 100%">
                     <li><a href="#!/account/forgot">Quên mật khẩu</a></li>
                     <li><a href="#!/account/change">Đổi mật khẩu</a></li>
@@ -137,8 +114,8 @@
     <!-- End Header -->
     <!-- ng-view -->
     <div class="col">
-        <div ng-show="loading" class="scrollto"></div>
-        <ng-view></ng-view>
+      <div ng-show="loading" class="scrollto"></div>
+      <ng-view></ng-view>
     </div>
     <!-- End ng-view -->
     <!-- ======= Footer ======= -->
@@ -147,9 +124,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3 col-md-6 footer-contact">
-              <h3 style="font-size: 34px; font-weight: 900; color: #58cc02">
-                CodeQuiz
-              </h3> 
+              <h3 style="font-size: 34px; font-weight: 900; color: #58cc02">CodeQuiz</h3>
               <p>
                 Dĩ An, Bình Dương <br />
                 Việt Nam<br />
@@ -161,15 +136,9 @@
             <div class="col-lg-2 col-md-6 footer-links">
               <h4>Liên kết hữu ích</h4>
               <ul>
-                <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#!/home">Trang chủ</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#!/subject">Môn học</a>
-                </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#">Dịch vụ</a>
-                </li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#!/home">Trang chủ</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#!/subject">Môn học</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Dịch vụ</a></li>
                 <li>
                   <i class="bx bx-chevron-right"></i>
                   <a href="#">Terms of service</a>
@@ -184,9 +153,7 @@
             <div class="col-lg-3 col-md-6 footer-links">
               <h4>Dịch vụ khác</h4>
               <ul>
-                <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#">Web Design</a>
-                </li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
                 <li>
                   <i class="bx bx-chevron-right"></i>
                   <a href="#">Web Development</a>
@@ -195,9 +162,7 @@
                   <i class="bx bx-chevron-right"></i>
                   <a href="#">Product Management</a>
                 </li>
-                <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#">Marketing</a>
-                </li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
                 <li>
                   <i class="bx bx-chevron-right"></i>
                   <a href="#">Graphic Design</a>
@@ -219,7 +184,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="container d-lg-flex py-4">
         <div class="me-lg-auto text-center text-lg-start">
           <div class="copyright">
@@ -233,9 +198,7 @@
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/ -->
             Designed by
-            <a
-              href="https://facebook.com/phh235"
-              style="color: #58cc02; font-weight: 600"
+            <a href="https://facebook.com/phh235" style="color: #58cc02; font-weight: 600"
               >phh235</a
             >
           </div>
@@ -263,11 +226,12 @@
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
+    <!-- Sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/pageCtrl.js"></script>
-    <script src="assets/js/loginCtrl.js"></script>
+    <script src="db/Subjects.js"></script>
     <!-- <script>
       const cursorDot = document.querySelector("[data-cursor-dot]");
       const cursorOutline = document.querySelector("[data-cursor-outline]");

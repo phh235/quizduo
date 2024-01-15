@@ -4,27 +4,27 @@
     <div class="col-lg-4 col-md-6 col-sm-8 col-12">
       <h1 style="font-weight: 800">Đăng nhập</h1>
       <div class="col">
-        <form ng-submit="login()">
+        <form ng-submit="login()" >
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Tên đăng nhập</label>
+            <label for="username" class="form-label">Tên đăng nhập</label>
             <input
               type="text"
               class="form-control formCtrl"
-              id="exampleInputEmail1"
+              id="username"
               aria-describedby="emailHelp"
               ng-model="user.username"
             />
           </div>
-          <label for="inputPassword5" class="form-label">Mật khẩu</label>
+          <label for="password" class="form-label">Mật khẩu</label>
           <input
             type="password"
-            id="inputPassword5"
+            id="password"
             class="form-control formCtrl"
             aria-describedby="passwordHelpBlock"
             ng-model="user.password"
           />
           <div class="mb-3 form-check"></div>
-          <button type="submit" class="btn btn-primary" style="background-color: #58cc02">
+          <button type="submit" class="btn btn-primary" style="background-color: #58cc02" onclick="login(event)">
             Đăng nhập
           </button>
         </form>

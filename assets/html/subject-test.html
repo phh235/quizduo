@@ -1,0 +1,32 @@
+<section id="values" class="values">
+  <div class="container" ng-controller="subjectCtrl">
+    <h1 style="font-weight: 800; color: #58cc02" data-aos="fade-up">Môn học</h1>
+
+    <div class="row">
+      <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" ng-repeat="sub in list_subject|limitTo:21:begin">
+        <div class="card text-center py-1">
+          <div class="card-header">{{sub.Name}}</div>
+          <div class="card-body"><img src="/assets/img/logos/{{sub.Logo}}" alt="" ></div>
+          <div class="card-footer"><a href="#!/quiz/{{sub.Id}}" class="btn bg-light border">Làm ngay</a></div>
+        </div>
+      </div>
+    </div>
+    <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center p-5">
+              <li class="page-item">
+                <a class="page-link" href="" ng-click="first()">first</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="" ng-click="prev()">prev</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="" ng-click="next()">next</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="" ng-click="last()">last</a>
+              </li>
+            </ul>
+          </nav>
+  </div>
+</section>
+<!-- End Values Section -->

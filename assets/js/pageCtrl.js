@@ -1,6 +1,34 @@
 var myApp = angular.module("myApp", ["ngRoute"]);
 
-myApp.controller("myControl", function ($scope) {});
+myApp.controller("myCtrl", function ($scope) {});
+
+myApp.controller("subjectCtrl", function ($scope, $http) {
+  $scope.list_subject = [];
+  $http.get("db/Subjects.js").then(function (reponse) {
+    $scope.list_subject = reponse.data;
+    console.log($scope.list_subject);  
+  });
+
+  $scope.begin = 0;
+  $scope.pageCount = Math.ceil($scope.list_subject.length / 8);
+
+  $scope.first = function () {
+    $scope.begin = 0;
+  };
+  $scope.prev = function () {
+    if ($scope.begin > 0) {
+      $scope.begin -= 8;
+    }
+  };
+  $scope.next = function () {
+    if ($scope.begin < ($scope.pageCount - 1) * 8) {
+      $scope.begin += 8;
+    }
+  };
+  $scope.last = function () {
+    $scope.begin = ($scope.pageCount - 1) * 8;
+  };
+});
 
 myApp.config(function ($routeProvider) {
   $routeProvider
@@ -8,10 +36,17 @@ myApp.config(function ($routeProvider) {
       templateUrl: "assets/html/home.html",
     })
     .when("/subject", {
-      templateUrl: "assets/html/subject.html",
+      templateUrl: "assets/html/subject-test.html",
+      controller: "subjectCtrl",
+    })
+    .when("/quiz/:subjectId", {
+      templateUrl: "assets/html/quiz.html",
     })
     .when("/account", {
       templateUrl: "assets/html/account.html",
+    })
+    .when("/user:accountId", {
+      templateUrl: "assets/html/user_details.html",
     })
     .when("/contact", {
       templateUrl: "assets/html/contact.html",
@@ -54,3 +89,4 @@ myApp.run(function ($rootScope) {
     alert("Lỗi");
   });
 });
+
