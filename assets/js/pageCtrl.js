@@ -2,31 +2,50 @@ var myApp = angular.module("myApp", ["ngRoute"]);
 
 myApp.controller("myCtrl", function ($scope) {});
 
+myApp.controller("quizCtrl", function ($scope, $http) {
+  $scope.list_subject = [];
+  $http.get("db/Quizs/ADAV.js").then(function (reponse) {
+    $scope.list_subject = reponse.data;
+    console.log($scope.list_subject);
+  });
+});
+
 myApp.controller("subjectCtrl", function ($scope, $http) {
   $scope.list_subject = [];
   $http.get("db/Subjects.js").then(function (reponse) {
     $scope.list_subject = reponse.data;
-    console.log($scope.list_subject);  
+    console.log($scope.list_subject);
   });
 
+  // function getListQuestion() {
+  //   $scope.ListQuestion = [];
+  //   $scope.currentQuestion = [];
+  //   $scope.currentQuestion.push($scope.list_subject);
+  //   $scope.currentQuestion.map((i) => {
+  //     if ($scope.ListQuestion.length < 10) {
+  //       var random = Math.random() * 10;
+  //       $scope.ListQuestion.push($scope.currentQuestion[random]);
+  //     }
+  //   });
+  // }
   $scope.begin = 0;
-  $scope.pageCount = Math.ceil($scope.list_subject.length / 8);
+  $scope.pageCount = Math.ceil($scope.list_subject.length / 4);
 
   $scope.first = function () {
     $scope.begin = 0;
   };
   $scope.prev = function () {
     if ($scope.begin > 0) {
-      $scope.begin -= 8;
+      $scope.begin -= 4;
     }
   };
   $scope.next = function () {
-    if ($scope.begin < ($scope.pageCount - 1) * 8) {
-      $scope.begin += 8;
+    if ($scope.begin > ($scope.pageCount - 1) * 4) {
+      $scope.begin += 4;
     }
   };
   $scope.last = function () {
-    $scope.begin = ($scope.pageCount - 1) * 8;
+    $scope.begin = ($scope.pageCount - 1) * 4;
   };
 });
 
@@ -90,3 +109,59 @@ myApp.run(function ($rootScope) {
   });
 });
 
+// Quiz
+myApp.controller("quizCtrl", [
+  "$scope",
+  "$element",
+  "$attrs",
+  "quizFactory",
+  function ($scope, $element, $attrs) {
+    // Controller code here
+    $scope.start = function () {
+      $scope.inProgress = true;
+      $scope.getQuestions();
+    };
+    $scope.reset = function () {
+      $scope.inProgress = false;
+    };
+    $scope.reset();
+
+    $scope.getQuestions = function () {
+      // Kiểm tra nếu $scope.id đã được đặt giá trị
+      if (angular.isDefined($scope.id)) {
+        var quiz = quizFactory.getQuestions($scope.id);
+        if (quiz) {
+          $scope.question = quiz.Text;
+          $scope.options = quiz.Answers;
+          $scope.answer = quiz.AnswerId;
+          $scope.marks = quiz.Marks;
+        }
+      } else {
+        console.log("$scope.id is not defined.");
+      }
+    };
+
+    $scope.checkAnswer = function () {
+      if (!$('input[name="answer"]:checked').length) return;
+      var ans = $('input[name="answer"]:checked').val();
+      if (ans == $scope.answer) {
+        alert("Đúng");
+      } else {
+        alert("Sai");
+      }
+    };
+  },
+]);
+
+myApp.factory("quizFactory", function ($http) {
+  var questions = [];
+  $http.get("../db/Quizs/ADAV.js").then(function (res) {
+    questions = res.data;
+    // alert(questions.length);
+  });
+  return {
+    getQuestions: function (id) {
+      return questions[id];
+    },
+  };
+});

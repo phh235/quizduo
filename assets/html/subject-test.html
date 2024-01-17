@@ -1,9 +1,9 @@
-<section id="values" class="values">
+<section id="values" class="values" data-aos="fade-up">
   <div class="container" ng-controller="subjectCtrl">
-    <h1 style="font-weight: 800; color: #58cc02" data-aos="fade-up">Môn học</h1>
+    <h1 style="font-weight: 800; color: #58cc02">Môn học</h1>
 
     <div class="row">
-      <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" ng-repeat="sub in list_subject|limitTo:21:begin">
+      <div class="col-md-6 d-flex align-items-stretch mt-4" ng-repeat="sub in list_subject|limitTo:4:begin">
         <div class="card text-center py-1">
           <div class="card-header">{{sub.Name}}</div>
           <div class="card-body"><img src="/assets/img/logos/{{sub.Logo}}" alt="" ></div>
