@@ -22,8 +22,8 @@
   z-index: 999;
   mix-blend-mode: difference;
   pointer-events: none;
-}
-a:hover {
+} */
+/* a:hover {
   cursor: none;
 }
 input:hover {
@@ -959,7 +959,6 @@ section {
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 15px;
-  
 }
 
 .values .card-body {
@@ -2448,50 +2447,55 @@ section {
   font-weight: 500;
 }
 
- /* Quiz CSS */
+/* Quiz CSS */
 label.box {
-        display: flex;
-        margin-top: 10px;
-        padding: 10px 12px;
-        border-radius: 5px;
-        cursor: pointer;
-        border: 1px solid #ddd;
-      }
-      #one:checked ~ label.first,
-      #two:checked ~ label.second,
-      #three:checked ~ label.third,
-      #four:checked ~ label.forth{
-        border-color: #0d6efd;
-      }
-      #one:checked ~ label.first .circle,
-      #two:checked ~ label.second .circle,
-      #three:checked ~ label.third .circle,
-      #four:checked ~ label.forth .circle {
-        border: 6px solid #0d6efd;
-        background-color: #fff;
-      }
-      label.box:hover {
-        background: rgba(13, 94, 255, 0.7);
-        color: #fff;
-      }
-      label.box .course {
-        display: flex;
-        align-items: center;
-        width: 100%;
-      }
-      label.box .circle {
-        height: 22px;
-        width: 22px;
-        border-radius: 50%;
-        margin-right: 15px;
-        border: 2px solid #ddd;
-        display: inline-block;
-      }
-      input[type="radio"] {
-        display: none;
-      }
-      @media (max-width: 450px) {
-        .subject {
-          font-size: 12px;
-        }
-      }
+  display: flex;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
+#one:checked ~ label.first,
+#two:checked ~ label.second,
+#three:checked ~ label.third,
+#four:checked ~ label.forth {
+  border-color: #0d6efd;
+}
+#one:checked ~ label.first .circle,
+#two:checked ~ label.second .circle,
+#three:checked ~ label.third .circle,
+#four:checked ~ label.forth .circle {
+  border: 6px solid #0d6efd;
+  background-color: #fff;
+}
+label.box:hover {
+  background: rgba(13, 94, 255, 0.6);
+  color: #fff;
+}
+label.box .course {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+label.box .circle {
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 2px solid #ddd;
+  display: inline-block;
+}
+input[type="radio"] {
+  display: none;
+}
+@media (max-width: 450px) {
+  .subject {
+    font-size: 12px;
+  }
+}
+
+.page-item {
+  padding: 10px;
+  font-family: "Nunito";
+}

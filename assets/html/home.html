@@ -27,7 +27,7 @@
               cơ bản đến nâng cao về nhiều khía cạnh trong các ngôn ngữ lập trình phổ biến.
             </p>
             <div class="text-center">
-              <a href="#" class="more-btn" style="font-weight: 700"
+              <a href="#!/subject" class="more-btn" style="font-weight: 700"
                 >Học thôi <i class="bx bx-chevron-right"></i
               ></a>
             </div>
@@ -283,4 +283,42 @@
 
       </div>
     </section> -->
+    <section id="values" class="values" data-aos="fade-up">
+  <div class="container" ng-controller="subjectCtrl">
+    <h1 style="font-weight: 800; color: #58cc02" class="text-center">Môn học</h1>
+
+    <div class="row">
+      <div
+        class="col-md-3 d-flex align-items-stretch mt-4"
+        ng-repeat="sub in list_subject|limitTo:4:begin"
+      >
+        <div class="card text-center py-1">
+          <div class="card-header" style="font-weight: 700;">{{sub.Name}}</div>
+          <div class="card-body"><img src="/assets/img/logos/{{sub.Logo}}" alt="" /></div>
+          <div class="card-footer">
+            <a href="#!/quiz/{{sub.Id}}" class="btn text-light border" style="background-color: #58c002;">Làm ngay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center p-5">
+        <li class="page-item">
+          <a class="page-link" href="" ng-click="prev()"
+            ><span><i class="bi bi-arrow-left"></i></span> Trang trước</a
+          >
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="" ng-click="next()"
+            >Trang tiếp <span><i class="bi bi-arrow-right"></i></span
+          ></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+<!-- End Values Section -->
+
 </main>
+
+

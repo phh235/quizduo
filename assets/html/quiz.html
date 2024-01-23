@@ -1,7 +1,7 @@
 <div class="container py-5 text-black" id="content" ng-controller="quizCtrl">
   <div class="row" ng-show="!inProgress">
     <div class="col text-center py-5">
-      <button class="btn btn-success" ng-click="start()">Start the Quiz</button>
+      <button class="btn btn-success" ng-click="start()" style="background-color: #58cc02;">Bắt đầu làm</button>
     </div>
   </div>
   <div ng-show="inProgress">
@@ -60,10 +60,10 @@
             ></div>
           </div>
           <div class="card-footer">
-            <button class="btn btn-success" ng-click="checkAnswer()">Submit</button>
-            <button class="btn btn-success">Next</button>
+            <button class="btn btn-success" ng-click="checkAnswer()">Xác nhận</button>
+            <button class="btn btn-warning">Tiếp tục</button>
             <span
-              class="badge bg-warning"
+              class="badge bg-info float-end p-3"
               style="padding: 0.28em 0.7em; font-size: 90%; font-weight: 500; color: black"
               >Điểm: 6/10</span
             >

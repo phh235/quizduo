@@ -10,7 +10,8 @@
 
     <!-- Favicons -->
     <!-- <link href="assets/img/favicon.ico" rel="icon"> -->
-    <link href="assets/img/0cecd302cf0bcd0f73d51768feff75fe.svg" rel="icon" />
+    <!-- <link href="assets/img/0cecd302cf0bcd0f73d51768feff75fe.svg" rel="icon" /> -->
+    <link href="assets/img/duolingo-touch-icon2.png" rel="icon" />
     <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
     <!-- Google Fonts -->
@@ -52,9 +53,7 @@
   </head>
 
   <body ng-app="myApp" ng-controller="myCtrl">
-    <!-- <div class="cursor-dot" data-cursor-dot>
-      <img src="assets/img/0cecd302cf0bcd0f73d51768feff75fe.svg" alt="" width="30px" height="30px">
-    </div>
+    <!-- <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div> -->
     <!-- <section id="topbar" class="d-flex align-items-center">
       <div class="container d-flex justify-content-center justify-content-md-between">
@@ -118,7 +117,7 @@
     <!-- End Header -->
     <!-- ng-view -->
     <div class="col">
-      <div ng-show="loading" class="scrollto"></div>
+      <div ng-show="loading"></div>
       <ng-view></ng-view>
     </div>
     <!-- End ng-view -->
@@ -189,7 +188,7 @@
         </div>
       </div>
 
-      <div class="container d-lg-flex py-4">
+      <!-- <div class="container d-lg-flex py-4">
         <div class="me-lg-auto text-center text-lg-start">
           <div class="copyright">
             &copy; Copyright
@@ -197,10 +196,6 @@
             >. All Rights Reserved
           </div>
           <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/ -->
             Designed by
             <a href="https://facebook.com/phh235" style="color: #58cc02; font-weight: 600"
               >phh235</a
@@ -213,7 +208,7 @@
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
-      </div>
+      </div> -->
     </footer>
     <!-- End Footer -->
 
@@ -236,27 +231,27 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/pageCtrl.js"></script>
     <script src="db/Subjects.js"></script>
-    <!-- <script>
-      const cursorDot = document.querySelector("[data-cursor-dot]");
-      const cursorOutline = document.querySelector("[data-cursor-outline]");
-      window.addEventListener("mousemove", function (e) {
-        const posX = e.clientX;
-        const posY = e.clientY;
+    <script>
+    //   const cursorDot = document.querySelector("[data-cursor-dot]");
+    //   const cursorOutline = document.querySelector("[data-cursor-outline]");
+    //   window.addEventListener("mousemove", function (e) {
+    //     const posX = e.clientX;
+    //     const posY = e.clientY;
 
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
+    //     cursorDot.style.left = `${posX}px`;
+    //     cursorDot.style.top = `${posY}px`;
 
-        // cursorOutline.style.left = `${posX}px`;
-        // cursorOutline.style.top = `${posY}px`;
+    //     // cursorOutline.style.left = `${posX}px`;
+    //     // cursorOutline.style.top = `${posY}px`;
 
-        cursorOutline.animate(
-          {
-            left: `${posX}px`,
-            top: `${posY}px`,
-          },
-          { duration: 500, fill: "forwards" }
-        );
-      });
-    </script> -->
+    //     cursorOutline.animate(
+    //       {
+    //         left: `${posX}px`,
+    //         top: `${posY}px`,
+    //       },
+    //       { duration: 400, fill: "forwards" }
+    //     );
+    //   });
+    // </script>
   </body>
 </html>
