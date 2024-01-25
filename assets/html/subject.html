@@ -1,72 +1,33 @@
-<section id="values" class="values" ng-controller="subjectCtrl">
-  <div class="container">
-    <h1 style="font-weight: 800; color: #58cc02;" data-aos="fade-up">Môn học</h1>
+<section id="values" class="values" data-aos="fade-up">
+  <div class="container" ng-controller="subjectCtrl">
+    <h1 style="font-weight: 800; color: #58cc02" class="text-center">Môn học</h1>
 
     <div class="row">
-      <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up">
-        <div class="card" style="background-image: url(assets/img/logos/ADAV.jpg)">
-          <div class="card-body">
-            <a href="/assets/html/test.html"><p class="card-text bg-light">Lập trình Android nâng cao</p></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up">
-        <div class="card" style="background-image: url(assets/img/logos/ADBS.jpg)">
-          <div class="card-body">
-            <p class="card-text">Lập trình Android cơ bản</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up">
-        <div class="card" style="background-image: url(assets/img/logos/ADTE.jpg)">
-          <div class="card-body">
-            <p class="card-text">Kiểm thử và triển khai ứng dụng Android</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up">
-        <div class="card" style="background-image: url(assets/img/logos/ADUI.jpg)">
-          <div class="card-body">
-            <p class="card-text">Thiết kế giao diện Android</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="50">
-        <div class="card" style="background-image: url(assets/img/logos/WEBU.jpg)">
-          <div class="card-body">
-            <p class="card-text">Xây dựng trang web</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="card" style="background-image: url(assets/img/logos/DBBS.png)">
-          <div class="card-body">
-            <p class="card-text">Cơ sở dữ liệu</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="card" style="background-image: url(assets/img/logos/DBAV.png)">
-          <div class="card-body">
-            <p class="card-text">SQL Server</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="card" style="background-image: url(assets/img/logos/ASNE.png)">
-          <div class="card-body">
-            <p class="card-text">Lập trình ASP.NET</p>
+      <div
+        class="col-md-3 d-flex align-items-stretch mt-4"
+        ng-repeat="sub in list_subject|limitTo:4:begin"
+      >
+        <div class="card text-center py-1">
+          <div class="card-header" style="font-weight: 700;">{{sub.Name}}</div>
+          <div class="card-body"><img src="/assets/img/logos/{{sub.Logo}}" alt="" /></div>
+          <div class="card-footer">
+            <a href="#!/quiz/{{sub.Id}}/{{sub.Name}}" class="btn text-light border" style="background-color: #58c002;">Làm ngay</a>
           </div>
         </div>
       </div>
     </div>
-    <nav aria-label="Page navigation example form-control" data-aos="fade-up">
+    <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center p-5">
-        <li class="page-item"><a class="page-link" href="">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="">1</a></li>
-        <li class="page-item"><a class="page-link" href="">2</a></li>
-        <li class="page-item"><a class="page-link" href="">3</a></li>
-        <li class="page-item"><a class="page-link" href="">Next</a></li>
+        <li class="page-item">
+          <a class="page-link py-3 text-light bg-primary" href="" ng-click="prev()"
+            ><span><i class="bi bi-arrow-left"></i></span> Trang trước</a
+          >
+        </li>
+        <li class="page-item">
+          <a class="page-link py-3 text-light bg-primary" href="" ng-click="next()"
+            >Trang tiếp <span><i class="bi bi-arrow-right"></i></span
+          ></a>
+        </li>
       </ul>
     </nav>
   </div>

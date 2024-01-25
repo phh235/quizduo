@@ -1,32 +1,76 @@
-﻿[
-  {
-    "username": "teonv",
-    "password": "iloveyou",
-    "fullname": "Nguyễn Văn Tèo",
-    "email": "teonv@fpt.edu.vn",
-    "gender": "true",
-    "birthday": "1995-12-21",
-    "schoolfee": "1500000",
-    "marks": "0"
-  },
-  {
-    "username": "pheonv",
-    "password": "iloveyou",
-    "fullname": "Nguyễn Văn Chí Phèo",
-    "email": "pheonv@fpt.edu.vn",
-    "gender": "true",
-    "birthday": "1985-10-11",
-    "schoolfee": "2500000",
-    "marks": "0"
-  },
-  {
-    "username": "nopt",
-    "password": "iloveyou",
-    "fullname": "Phạm Thị Nở",
-    "email": "nopt@fpt.edu.vn",
-    "gender": "false",
-    "birthday": "1993-05-15",
-    "schoolfee": "2000000",
-    "marks": "0"
-  }
-]
+{
+  "listStudent": [
+    {
+      "username": "teonv",
+      "password": "iloveyou",
+      "fullname": "Nguyễn Văn Tèo",
+      "email": "teonv@fpt.edu.vn",
+      "gender": "true",
+      "birthday": "1995-12-21",
+      "schoolfee": "1500000",
+      "marks": "0",
+      "id": "1"
+    },
+    {
+      "username": "pheonv",
+      "password": "iloveyou",
+      "fullname": "Nguyễn Văn Chí Phèo",
+      "email": "pheonv@fpt.edu.vn",
+      "gender": "true",
+      "birthday": "1985-10-11",
+      "schoolfee": "2500000",
+      "marks": "0",
+      "id": "2"
+    },
+    {
+      "username": "nopt",
+      "password": "iloveyou",
+      "fullname": "Phạm Thị Nở",
+      "email": "nopt@fpt.edu.vn",
+      "gender": "false",
+      "birthday": "1993-05-15",
+      "schoolfee": "2000000",
+      "marks": "0",
+      "id": "3"
+    },
+    {
+      "id": "0.3089375137999679",
+      "username": "phh235",
+      "password": "123",
+      "fullname": "Phan Huy Hoàng",
+      "email": "hoangaatrox23504@gmail.com",
+      "schoolfee": "0",
+      "marks": "0"
+    },
+    {
+      "id": "0.7949703644290009",
+      "username": "123",
+      "password": "123",
+      "fullname": "123",
+      "email": "hoangphps30236@fpt.edu.vn",
+      "birthday": "2024-01-11T17:00:00.000Z",
+      "schoolfee": "0",
+      "marks": "0"
+    },
+    {
+      "id": "0.827972739294879",
+      "username": "hungdt1509",
+      "password": "1234",
+      "fullname": "Đặng Thành Hùng",
+      "email": "hungdt@gmail.com",
+      "birthday": "2004-09-14T17:00:00.000Z",
+      "schoolfee": "0",
+      "marks": "0"
+    },
+    {
+      "id": 0.6902178364840421,
+      "username": "1",
+      "password": "1",
+      "fullname": "1",
+      "email": "hoangphps30236@fpt.edu.vn",
+      "birthday": "2024-01-17T17:00:00.000Z",
+      "schoolfee": "0",
+      "marks": "0"
+    }
+  ]
+}

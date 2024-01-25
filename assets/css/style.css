@@ -2486,9 +2486,9 @@ label.box .circle {
   border: 2px solid #ddd;
   display: inline-block;
 }
-input[type="radio"] {
+/* input[type="radio"] {
   display: none;
-}
+} */
 @media (max-width: 450px) {
   .subject {
     font-size: 12px;

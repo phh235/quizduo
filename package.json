@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "json:server": "json-server --watch db/Student.json"
+    "json:server": "json-server --watch db/Students.json"
   },
   "author": "",
   "license": "ISC",

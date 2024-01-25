@@ -1,10 +1,10 @@
-<div class="container" data-aos="fade-up" ng-app="loginApp" ng-controller="loginController">
+<div class="container" data-aos="fade-up">
   <br /><br /><br />
   <div class="row justify-content-center">
     <div class="col-lg-4 col-md-6 col-sm-8 col-12 border border-3 bg-secondary bg-opacity-10 py-5 rounded-4">
       <h1 style="font-weight: 800; color: #58cc02" class="text-center">Đăng nhập</h1>
       <div class="col">
-        <form ng-submit="login()">
+        <form ng-controller="loginCtrl">
           <div class="mb-3">
             <label for="username" class="form-label">Tên đăng nhập</label>
             <input
@@ -12,7 +12,7 @@
               class="form-control formCtrl"
               id="username"
               aria-describedby="emailHelp"
-              ng-model="user.username"
+              ng-model="username"
             />
           </div>
           <label for="password" class="form-label">Mật khẩu</label>
@@ -21,17 +21,20 @@
             id="password"
             class="form-control formCtrl"
             aria-describedby="passwordHelpBlock"
-            ng-model="user.password"
+            ng-model="password"
+            autocomplete="current-password"
           />
           <div class="mb-3 form-check"></div>
-          <button
+          <div class="text-center">
+            <button
             type="submit"
             class="btn btn-primary"
             style="background-color: #58cc02"
-            onclick="login(event)"
+            ng-click="login()"
           >
             Đăng nhập
           </button>
+          </div>
         </form>
       </div>
     </div>
