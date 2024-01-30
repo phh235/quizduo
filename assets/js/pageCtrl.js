@@ -1,6 +1,48 @@
 var myApp = angular.module("myApp", ["ngRoute"]);
+myApp.controller("myCtrl", function ($scope, $http) {
+  
+});
 
-myApp.controller("myCtrl", function ($scope) {});
+myApp.controller("forgotCtrl", function ($scope, $http) {
+  $scope.listStudent = [];
+
+  // Lấy dữ liệu sinh viên từ file JSON
+  $http.get("db/Students.json").then(
+    function (response) {
+      $scope.listStudent = response.data.listStudent;
+    },
+    function (error) {
+      console.error("Lỗi khi lấy dữ liệu sinh viên:", error);
+    }
+  );
+
+  // Hàm xử lý khi nhấn nút "Xác nhận"
+  $scope.forgot = function () {
+    console.log("Email:", $scope.email);
+
+    // Tìm sinh viên có email trùng khớp
+    const user = $scope.listStudent.find((s) => s.email === $scope.email);
+
+    if (user) {
+      // Hiển thị SweetAlert với thông báo password
+      Swal.fire({
+        title: "Mật khẩu của bạn là:",
+        text: user.password,
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+    } else {
+      // Hiển thị SweetAlert với thông báo email không tồn tại
+      Swal.fire({
+        title: "Email không tồn tại trong hệ thống",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    }
+  };
+})
+
+
 
 myApp.controller("subjectCtrl", function ($scope, $http) {
   $scope.list_subject = [];
@@ -33,7 +75,7 @@ myApp.config(function ($routeProvider) {
       templateUrl: "assets/html/subject.html",
       controller: "subjectCtrl",
     })
-    .when("/quiz/:subjectId/:subjectName", {
+    .when("/quiz/:idMH/:tenMH", {
       templateUrl: "assets/html/quiz.html",
       controller: "quizCtrl",
     })
@@ -106,48 +148,293 @@ myApp.controller("registerCtrl", function ($scope, $http) {
   };
 });
 
-myApp.run(function ($rootScope) {
-  $rootScope.$on("$routeChangeStart", function () {
-    $rootScope.loading = true;
-  });
-  $rootScope.$on("$routeChangeSuccess", function () {
-    $rootScope.loading = false;
-  });
-  $rootScope.$on("$routeChangeError", function () {
-    $rootScope.loading = false;
-    alert("Lỗi");
-  });
-});
-
 // quiz
-myApp.controller("quizCtrl", function ($scope, $http, $routeParams) {
+myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
   $scope.caccauhoi = [];
-  $scope.subjectId = $routeParams.subjectId;
-  $scope.subjectName = $routeParams.subjectName;
+  $scope.idMH = $routeParams.idMH;
+  $scope.tenMH = $routeParams.tenMH;
   $scope.start = 0;
+  $scope.time = 0;
+  implement();
+  getData();
+
+  function implement() {
+    $scope.listQuestions = [];
+    $scope.questions = [];
+    $scope.selectedButton = [];
+    $scope.listOfRightAnswer = [];
+    $scope.listQuestions = [];
+    $scope.currentIndex = 0;
+    $scope.totalQuestions = 0;
+    $scope.initSelected = null;
+    $scope.first = true;
+    $scope.last = false;
+    $scope.historyQuestionRight = [];
+    $scope.historyQuestionWrong = [];
+    $scope.currentQuestionWrong = 0;
+    $scope.timePerSec = 0;
+    $scope.time = 0;
+    $scope.percent;
+    $scope.show = false;
+  }
   $scope.next = function () {
-    if ($scope.start < 0) $scope.start = 0;
-    else $scope.start += 1;
+    $scope.currentIndex += 1;
+    if ($scope.currentIndex > $scope.listQuestions.length - 1) {
+      $scope.currentIndex = 0;
+    }
+    getQuestion();
   };
   $scope.prev = function () {
-    if ($scope.start < 0) $scope.start = 0;
-    else $scope.start -= 1;
-  };
-  $http.get("db/Quizs/" + $scope.subjectId + ".js").then(
-    function (d) {
-      $scope.caccauhoi = d.data;
-    },
-    function (d) {
-      alert("Lỗi");
+    $scope.currentIndex -= 1;
+    if ($scope.currentIndex < 0) {
+      $scope.currentIndex = $scope.listQuestions.length - 1;
     }
-  );
+    getQuestion();
+  };
+  function getApi() {
+    $http.get("db/Quizs/" + $scope.idMH + ".js").then(
+      function (d) {
+        $scope.caccauhoi = d.data;
+        $scope.caccauhoi.map((item) => {
+          if ($scope.listQuestions.length < 10) {
+            var random = Math.floor(Math.random() * $scope.caccauhoi.length);
+            var flag = false;
+            if ($scope.listQuestions.length == 0) {
+              $scope.listQuestions.push($scope.caccauhoi[random]);
+            } else {
+              $scope.listQuestions.map((i) => {
+                if (i.Id == random) {
+                  flag = true;
+                }
+              });
+              if (flag == false) {
+                $scope.listQuestions.push($scope.caccauhoi[random]);
+              }
+            }
+          }
+        });
+        $scope.totalQuestions = $scope.questions.length;
+        $scope.currentQuestion = $scope.listQuestions[$scope.currentIndex];
+        console.log($scope.currentQuestion);
+        $scope.rightAnswer = $scope.currentQuestion.AnswerId;
+        $scope.idOfCurrentQuestion = $scope.currentQuestion.Id;
+        $scope.handed = false;
+        $scope.newTime();
+      },
+      function (d) {
+        alert("Lỗi");
+      }
+    );
+  }
+  function getQuestion() {
+    $scope.currentQuestion = $scope.listQuestions[$scope.currentIndex];
+    $scope.rightAnswer = $scope.currentQuestion.AnswerId;
+    $scope.idOfCurrentQuestion = $scope.currentQuestion.Id;
+    $scope.selectedButton.map((item) => {
+      if (item.id === $scope.idOfCurrentQuestion) {
+        $scope.selectedElement = item.answer;
+      }
+    });
+  }
+  $scope.selected = function (select) {
+    $scope.isAnswerCorrect = $scope.rightAnswer === select;
+    var answers = document.getElementById(select);
+    var allAnswer = document.getElementsByClassName("service-item");
+    // if ($scope.isAnswerCorrect) {
+    //     answers.style.transition = 'background-color 0.3s';
+    //     answers.style.backgroundColor = '#65B741';
+    // } else {
+    //     answers.style.transition = 'background-color 0.3s';
+    //     answers.style.backgroundColor = '#D71313';
+    // }
+    if ($scope.selectedButton.length === 0) {
+      $scope.selectedButton.push({ id: $scope.idOfCurrentQuestion, answers: select });
+    } else {
+      var checkAnswer = false;
+      $scope.selectedButton.map((i, index) => {
+        if (i.id === $scope.idOfCurrentQuestion) {
+          checkAnswer = true;
+          $scope.selectedButton[index].id = $scope.idOfCurrentQuestion;
+        }
+      });
+      if (checkAnswer == false) {
+        $scope.selectedButton.push({ id: $scope.idOfCurrentQuestion, answers: select });
+      }
+    }
+    if ($scope.isAnswerCorrect) {
+      if ($scope.listOfRightAnswer.length === 0 || $scope.listOfRightAnswer.length < 10) {
+        $scope.listOfRightAnswer.push(select);
+      } else {
+        var checkAnswer = false;
+        $scope.listOfRightAnswer.map((i) => {
+          if (i === select) {
+            checkAnswer = true;
+          }
+        });
+        if (checkAnswer == false) {
+          $scope.listOfRightAnswer.push(select);
+        }
+      }
+    } else {
+      $scope.listOfRightAnswer.map((item, index) => {
+        if (item === $scope.rightAnswer) {
+          $scope.listOfRightAnswer.splice(index, 1);
+        }
+      });
+      console.log("kq dung: " + $scope.listOfRightAnswer);
+    }
+    var yourAnswer = $scope.handleAnswer(select, $scope.rightAnswer);
+    const localData = JSON.parse(localStorage.getItem($scope.idMH));
+
+    if (localData) {
+      var existingIndex = localData.findIndex((x) => x.questionId == $scope.idOfCurrentQuestion);
+      console.log(existingIndex);
+      if (existingIndex !== -1) {
+        localData[existingIndex] = {
+          questionId: $scope.idOfCurrentQuestion,
+          answers: select,
+          check: yourAnswer,
+        };
+      } else {
+        localData.push({
+          questionId: $scope.idOfCurrentQuestion,
+          answers: select,
+          check: yourAnswer,
+        });
+      }
+      $scope.saveToLocal($scope.idMH, localData);
+    } else {
+      const firstAnswer = [
+        {
+          questionId: $scope.idOfCurrentQuestion,
+          answers: select,
+          check: yourAnswer,
+        },
+      ];
+      $scope.saveToLocal($scope.idMH, firstAnswer);
+    }
+
+    console.log("localdata");
+    console.log(localData);
+  };
+  $scope.handleAnswer = (answer, rightAnswer) => {
+    let checkAnswer = false;
+    if (answer === rightAnswer) {
+      checkAnswer = true;
+    }
+    return checkAnswer;
+  };
+  $scope.saveToLocal = (key, Obj) => {
+    const myJSON = JSON.stringify(Obj);
+    localStorage.setItem(key, myJSON);
+  };
+  $scope.handIn = () => {
+    Swal.fire({
+      position: "middle",
+      icon: "success",
+      title: "Nộp bài thành công!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    var handInCheck = true;
+    if (handInCheck) {
+      var totalQuestions = $scope.listQuestions.length;
+      var totalRightQuestions = $scope.listOfRightAnswer.length;
+      $scope.totalPoint = (totalRightQuestions * 10) / totalQuestions;
+      $scope.handed = true;
+      $interval.cancel($scope.intervalTime);
+      var localdata = JSON.parse(localStorage.getItem($scope.idMH));
+      console.log(localdata);
+      if (localdata) {
+        localdata.push({
+          handed: true,
+          score: $scope.totalPoint,
+          time: $scope.renderTime,
+          answers: $scope.listQuestions,
+        });
+        $scope.saveToLocal($scope.idMH, localdata);
+      }
+    }
+    $scope.historyQuestion = localdata.find((item) => {
+      return item.handed === true;
+    });
+    console.log($scope.historyQuestion);
+    localdata.forEach((item) => {
+      if (item.check === true) {
+        $scope.historyQuestionRight.push(item);
+      } else {
+        $scope.historyQuestionWrong.push(item);
+      }
+    });
+    console.log($scope.historyQuestionRight);
+    console.log($scope.historyQuestionWrong);
+    $scope.currentQuestionWrong = $scope.historyQuestionWrong.length - 1;
+    $scope.historyAnyQuestion = localdata.filter((item) => item.questionId);
+    $scope.timePerSec = Math.floor($scope.time / 10);
+    $scope.percent =
+      (($scope.listQuestions.length -
+        ($scope.listQuestions.length - $scope.listOfRightAnswer.length)) /
+        $scope.listQuestions.length) *
+        100 +
+      "%";
+    console.log($scope.percent);
+  };
+  $scope.again = () => {
+    localStorage.removeItem($scope.idMH);
+    getData();
+    $scope.handed = false;
+    $scope.show = false;
+    implement();
+  };
+  function getData() {
+    let localData = JSON.parse(localStorage.getItem($scope.idMH));
+    if (localData) {
+      let flag = false;
+      localData.find((item) => {
+        if (item.handed === true) {
+          flag = true;
+          $scope.handed = true;
+          $scope.totalPoint = item.score;
+          $scope.renderTime = item.time;
+        }
+      });
+      if (flag === false) {
+        getApi();
+      }
+    } else {
+      getApi();
+    }
+  }
+  $scope.showAnswer = () => {
+    var localdata = JSON.parse(localStorage.getItem($scope.idMH));
+    if (localdata) {
+      $scope.show = true;
+    } else if ($scope.show) {
+      $scope.show = false;
+    } else {
+      $scope.show = true;
+    }
+  };
+  $scope.newTime = () => {
+    //15 minute
+    $scope.intervalTime = $interval(function () {
+      $scope.time++;
+      $scope.timeHanded = 900 - $scope.time;
+      if ($scope.timeHanded === 0) {
+        alert("Over time");
+      }
+      $scope.timeHanded = new Date($scope.timeHanded * 1000).toISOString().substr(14, 5);
+      $scope.renderTime = new Date($scope.time * 1000).toISOString().substr(11, 8);
+    }, 1000);
+  };
 });
 
 // login
-myApp.controller("loginCtrl", function ($scope, $http) {
+myApp.controller("loginCtrl", function ($scope, $http, $location) {
   $scope.listStudent = [];
   $scope.getStudent = {};
-  var check = false;
+  $scope.isLoggedIn = false;
+  $scope.loggedInUser = "";
 
   $http.get("db/Students.json").then(
     function (d) {
@@ -157,31 +444,62 @@ myApp.controller("loginCtrl", function ($scope, $http) {
       alert("Lỗi");
     }
   );
+
+  var checkLoginStatus = function () {
+    var storedUsername = sessionStorage.getItem("username");
+    $scope.isLoggedIn = !!storedUsername;
+
+    // Nếu đã đăng nhập, gán tên người dùng cho biến loggedInUser
+    if ($scope.isLoggedIn) {
+      $scope.loggedInUser = storedUsername;
+    }
+  };
+
+  checkLoginStatus();
+
   $scope.login = function () {
+    var isLoggedIn = false;
     for (var i = 0; i < $scope.listStudent.length; i++) {
       if (
         $scope.username == $scope.listStudent[i].username &&
         $scope.password == $scope.listStudent[i].password
       ) {
         $scope.getStudent = $scope.listStudent[i];
-        check = true;
+        sessionStorage.setItem("username", $scope.username);
+
+        // Cập nhật loggedInUser khi đăng nhập
+        $scope.loggedInUser = $scope.username;
+
+        isLoggedIn = true;
+        $location.path("/home");
+        sessionStorage.setItem("username", $scope.username);
+        break;
       }
     }
-    if (check) {
+    if (isLoggedIn) {
       Swal.fire({
         title: "Đăng nhập thành công",
         icon: "success",
       }).then(function () {
         // Chuyển hướng sau khi người dùng ấn OK
-        window.location.href = "after-login.html";
+        // (lưu ý: chuyển hướng đã được thực hiện ở trên)
+
+        // Cập nhật trạng thái đăng nhập sau khi đã chuyển hướng
+        checkLoginStatus();
       });
     } else {
-       Swal.fire({
-         title: "Tên đăng nhập hoặc mật khẩu không đúng!",
-         icon: "error",
-       });
+      Swal.fire({
+        title: "Tên đăng nhập hoặc mật khẩu không đúng!",
+        icon: "error",
+      });
     }
-    console.log($scope.listStudent);
+    console.log("isLoggedIn:", isLoggedIn);
+  };
+
+  $scope.logout = function () {
+    sessionStorage.removeItem("username");
+    $scope.loggedInUser = "";
+    checkLoginStatus();
   };
 });
 
@@ -199,5 +517,18 @@ document.addEventListener("DOMContentLoaded", function () {
       // Đặt màu cho nav-link được kích hoạt
       link.style.color = "#58cc02"; // Đặt màu mới khi nav-link được kích hoạt
     });
+  });
+});
+
+myApp.run(function ($rootScope) {
+  $rootScope.$on("$routeChangeStart", function () {
+    $rootScope.loading = true;
+  });
+  $rootScope.$on("$routeChangeSuccess", function () {
+    $rootScope.loading = false;
+  });
+  $rootScope.$on("$routeChangeError", function () {
+    $rootScope.loading = false;
+    alert("Lỗi");
   });
 });
