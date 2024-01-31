@@ -1,7 +1,5 @@
 var myApp = angular.module("myApp", ["ngRoute"]);
-myApp.controller("myCtrl", function ($scope, $http) {
-  
-});
+myApp.controller("myCtrl", function ($scope, $http) {});
 
 myApp.controller("forgotCtrl", function ($scope, $http) {
   $scope.listStudent = [];
@@ -40,9 +38,7 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
       });
     }
   };
-})
-
-
+});
 
 myApp.controller("subjectCtrl", function ($scope, $http) {
   $scope.list_subject = [];
@@ -471,7 +467,7 @@ myApp.controller("loginCtrl", function ($scope, $http, $location) {
         $scope.loggedInUser = $scope.username;
 
         isLoggedIn = true;
-        $location.path("/home");
+        // $location.path("/home");
         sessionStorage.setItem("username", $scope.username);
         break;
       }
@@ -480,12 +476,11 @@ myApp.controller("loginCtrl", function ($scope, $http, $location) {
       Swal.fire({
         title: "Đăng nhập thành công",
         icon: "success",
-      }).then(function () {
-        // Chuyển hướng sau khi người dùng ấn OK
-        // (lưu ý: chuyển hướng đã được thực hiện ở trên)
-
-        // Cập nhật trạng thái đăng nhập sau khi đã chuyển hướng
-        checkLoginStatus();
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Nếu người dùng ấn "OK", chuyển trang
+          window.location.href = "after-login.html";
+        }
       });
     } else {
       Swal.fire({
