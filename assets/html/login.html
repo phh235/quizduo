@@ -1,39 +1,45 @@
 <div class="container" data-aos="fade-up">
   <br /><br /><br />
   <div class="row justify-content-center">
-    <div class="col-lg-4 col-md-6 col-sm-8 col-12 border border-3 bg-secondary bg-opacity-10 py-5 rounded-4">
+    <div
+      class="col-lg-4 col-md-6 col-sm-8 col-12 border border-3 bg-secondary bg-opacity-10 py-5 rounded-4"
+    >
       <h1 style="font-weight: 800; color: #58cc02" class="text-center">Đăng nhập</h1>
       <div class="col">
-        <form ng-controller="loginCtrl">
+        <form ng-controller="loginCtrl" name="formLogin">
           <div class="mb-3">
             <label for="username" class="form-label">Tên đăng nhập</label>
             <input
               type="text"
               class="form-control formCtrl"
               id="username"
-              aria-describedby="emailHelp"
+              name="username"
               ng-model="username"
+              required
             />
+            <i class="alert1" ng-show="formLogin.username.$invalid">Nhập tên đăng nhập</i>
           </div>
           <label for="password" class="form-label">Mật khẩu</label>
           <input
             type="password"
             id="password"
+            name="password"
             class="form-control formCtrl"
-            aria-describedby="passwordHelpBlock"
             ng-model="password"
             autocomplete="current-password"
+            required
           />
+          <i class="alert1" ng-show="formLogin.password.$invalid">Nhập mật khẩu</i>
           <div class="mb-3 form-check"></div>
           <div class="text-center">
             <button
-            type="submit"
-            class="btn btn-primary"
-            style="background-color: #58cc02"
-            ng-click="login()"
-          >
-            Đăng nhập
-          </button>
+              type="submit"
+              class="btn btn-primary"
+              style="background-color: #58cc02"
+              ng-click="login()"
+            >
+              Đăng nhập
+            </button>
           </div>
         </form>
       </div>

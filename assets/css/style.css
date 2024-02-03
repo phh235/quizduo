@@ -2499,3 +2499,11 @@ label.box .circle {
   padding: 10px;
   font-family: "Nunito";
 }
+
+.alert1 {
+  background-color: #c20000;
+  color: #fff;
+  font-family: "Lexend Deca";
+  border-radius: 5px;
+  padding: 5px;
+}

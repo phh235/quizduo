@@ -6,16 +6,23 @@
     >
       <h1 style="font-weight: 800; color: #58cc02" class="text-center">Đăng ký</h1>
       <div class="col">
-        <form ng-controller="registerCtrl">
+        <form ng-controller="registerCtrl" name="formSignup">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Tên đăng nhập</label>
             <input
               type="text"
               class="form-control formCtrl"
               id="exampleInputEmail1"
+              name="username"
               aria-describedby="emailHelp"
               ng-model="username"
+              required
+              ng-minlength="3"
+              ng-maxlength="10"
             />
+            <i class="alert1" ng-show="formSignup.username.$invalid"
+              >Tên đăng nhập phải từ 3 đến 10 ký tự</i
+            >
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Họ và tên</label>
@@ -23,9 +30,14 @@
               type="text"
               class="form-control formCtrl"
               id="exampleInputEmail1"
+              name="fullname"
               aria-describedby="emailHelp"
               ng-model="fullname"
+              required
             />
+            <i class="alert1" ng-show="formSignup.fullname.$invalid"
+              >Vui lòng nhập họ và tên của bạn</i
+            >
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
@@ -33,19 +45,28 @@
               type="email"
               class="form-control formCtrl"
               id="exampleInputEmail1"
+              name="email"
               aria-describedby="emailHelp"
               ng-model="email"
+              required
             />
+            <i class="alert1" ng-show="formSignup.email.$invalid"
+              >Email phải bao gồm @gmail.com</i
+            >
           </div>
           <div class="mb-3">
             <label for="inputPassword5" class="form-label">Mật khẩu</label>
             <input
               type="password"
               id="inputPassword5"
+              name="password"
               class="form-control formCtrl"
-              aria-describedby="passwordHelpBlock"
               ng-model="password"
+              required
             />
+            <i class="alert1" ng-show="formSignup.password.$invalid"
+              >Mật khẩu phải bao gồm 1 số và 1 ký tự đặc biệt</i
+            >
           </div>
           <div class="mb-3">
             <label for="inputPassword6" class="form-label">Nhập lại mật khẩu</label>
@@ -53,7 +74,6 @@
               type="password"
               id="inputPassword6"
               class="form-control formCtrl"
-              aria-describedby="passwordHelpBlock"
               ng-model="password"
             />
           </div>
@@ -86,9 +106,14 @@
             type="date"
             id="inputPassword5"
             class="form-control formCtrl"
+            name="date"
             aria-describedby="passwordHelpBlock"
             ng-model="birthday"
+            required
           />
+          <i class="alert1" ng-show="formSignup.date.$invalid"
+              >Vui lòng chọn ngày sinh</i
+            >
           <div class="mb-3 form-check"></div>
           <div class="text-center">
             <button

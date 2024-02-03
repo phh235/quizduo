@@ -1,4 +1,4 @@
-<div class="container" data-aos="fade-up">
+<div class="container" data-aos="fade-up" ng-controller="changePasswordCtrl()">
   <br /><br /><br />
   <div class="row justify-content-center">
     <div
@@ -14,6 +14,7 @@
               class="form-control formCtrl"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
+              ng-model="email"
             />
           </div>
           <label for="inputPassword5" class="form-label">Tên người dùng</label>
@@ -22,6 +23,7 @@
             id="inputPassword5"
             class="form-control formCtrl"
             aria-describedby="passwordHelpBlock"
+            ng-model="username"
           />
           <label for="inputPassword6" class="form-label">Nhập mật khẩu cũ</label>
           <input
@@ -29,6 +31,7 @@
             id="inputPassword6"
             class="form-control formCtrl"
             aria-describedby="passwordHelpBlock"
+            ng-model="currentPassword"
           />
           <label for="inputPassword7" class="form-label">Nhập mật khẩu mới</label>
           <input
@@ -36,6 +39,7 @@
             id="inputPassword7"
             class="form-control formCtrl"
             aria-describedby="passwordHelpBlock"
+            ng-model="newPassword"
           />
           <label for="inputPassword8" class="form-label">Xác nhận mật khẩu mới</label>
           <input
@@ -46,7 +50,12 @@
           />
           <div class="mb-3 form-check"></div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary" style="background-color: #58cc02">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="background-color: #58cc02"
+              ng-click="changePassword()"
+            >
               Xác nhận
             </button>
           </div>

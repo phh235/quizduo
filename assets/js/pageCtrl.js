@@ -26,7 +26,7 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
       Swal.fire({
         title: "Mật khẩu của bạn là:",
         text: user.password,
-        icon: "success",
+        icon: "info",
         confirmButtonText: "OK",
       });
     } else {
@@ -39,6 +39,52 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
     }
   };
 });
+
+// Change password
+myApp.controller("changePasswordCtrl", function ($scope, $http) {
+  // Assume you have the user's email when they are logged in
+  // Replace 'userLoggedInEmail' with the actual way you store the logged-in user's email
+  $scope.email = "userLoggedInEmail";
+
+  $scope.changePassword = function () {
+    // Check if passwords match
+    if ($scope.newPassword !== $scope.confirmPassword) {
+      // Handle password mismatch
+      console.log("Passwords do not match");
+      return;
+    }
+
+    // Find the user with the provided email
+    const user = $scope.listStudent.find((s) => s.email === $scope.email);
+
+    if (user) {
+      // Prepare data to send to JSON Server
+      const data = {
+        username: user.username,
+        currentPassword: $scope.currentPassword,
+        newPassword: $scope.newPassword,
+      };
+
+      // Assume that the JSON Server endpoint for changing passwords is different
+      // Adjust the endpoint according to your JSON Server setup
+      $http
+        .put(`http://localhost:3000/changePasswordEndpoint`, data)
+        .then(function (response) {
+          // Handle success response
+          console.log("Password changed successfully");
+        })
+        .catch(function (error) {
+          // Handle error response
+          console.error("Error changing password", error);
+        });
+    } else {
+      // Handle case where email is not found in listStudent
+      console.log("Email not found in listStudent");
+    }
+  };
+});
+
+
 
 myApp.controller("subjectCtrl", function ($scope, $http) {
   $scope.list_subject = [];
@@ -100,10 +146,10 @@ myApp.config(function ($routeProvider) {
     .when("/signUp", {
       templateUrl: "assets/html/register.html",
     })
-    .when("/account/forgot", {
+    .when("/forgot", {
       templateUrl: "assets/html/forgot.html",
     })
-    .when("/account/change", {
+    .when("/change", {
       templateUrl: "assets/html/changePass.html",
     })
     .otherwise({
