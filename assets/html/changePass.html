@@ -1,4 +1,4 @@
-<div class="container" data-aos="fade-up" ng-controller="changePasswordCtrl()">
+<div class="container" data-aos="fade-up" ng-controller="changePasswordCtrl">
   <br /><br /><br />
   <div class="row justify-content-center">
     <div
@@ -7,27 +7,27 @@
       <h1 style="font-weight: 800; color: #58cc02" class="text-center">Đổi mật khẩu</h1>
       <div class="col">
         <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
+          <!-- <div class="mb-3"> -->
+          <!-- <label for="exampleInputEmail1" class="form-label">Email</label>
             <input
               type="email"
               class="form-control formCtrl"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               ng-model="email"
-            />
-          </div>
-          <label for="inputPassword5" class="form-label">Tên người dùng</label>
+            /> -->
+          <!-- </div> -->
+          <!-- <label for="inputPassword5" class="form-label">Tên người dùng</label>
           <input
             type="text"
             id="inputPassword5"
             class="form-control formCtrl"
             aria-describedby="passwordHelpBlock"
             ng-model="username"
-          />
+          /> -->
           <label for="inputPassword6" class="form-label">Nhập mật khẩu cũ</label>
           <input
-            type="text"
+            type="password"
             id="inputPassword6"
             class="form-control formCtrl"
             aria-describedby="passwordHelpBlock"
@@ -35,7 +35,7 @@
           />
           <label for="inputPassword7" class="form-label">Nhập mật khẩu mới</label>
           <input
-            type="text"
+            type="password"
             id="inputPassword7"
             class="form-control formCtrl"
             aria-describedby="passwordHelpBlock"
@@ -43,15 +43,16 @@
           />
           <label for="inputPassword8" class="form-label">Xác nhận mật khẩu mới</label>
           <input
-            type="text"
+            type="password"
             id="inputPassword8"
             class="form-control formCtrl"
             aria-describedby="passwordHelpBlock"
+            ng-model="confirmPassword"
           />
           <div class="mb-3 form-check"></div>
           <div class="text-center">
             <button
-              type="submit"
+              type="button"
               class="btn btn-primary"
               style="background-color: #58cc02"
               ng-click="changePassword()"

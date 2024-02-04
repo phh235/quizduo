@@ -1,5 +1,31 @@
 var myApp = angular.module("myApp", ["ngRoute"]);
-myApp.controller("myCtrl", function ($scope, $http) {});
+myApp.controller("myCtrl", function ($scope, $http, $rootScope) {
+  $http
+    .get(`http://localhost:3000/listStudent`)
+    .then(function (response) {
+      $rootScope.listStudent = response.data;
+      $scope.checkLoginStatus();
+    })
+    .catch(function (error) {
+      // Handle error response
+      console.error("Error changing password", error);
+    });
+
+  $scope.logout = function () {
+    sessionStorage.removeItem("username");
+    $rootScope.isLoggedIn = false;
+    location.reload();
+  };
+
+  $rootScope.checkLoginStatus = function () {
+    var storedUsername = sessionStorage.getItem("username");
+    $rootScope.isLoggedIn = !!storedUsername;
+    // Nếu đã đăng nhập, gán tên người dùng cho biến loggedInUser
+    if ($rootScope.isLoggedIn) {
+      $rootScope.getStudent = $scope.listStudent.find((s) => s.username === storedUsername);
+    }
+  };
+});
 
 myApp.controller("forgotCtrl", function ($scope, $http) {
   $scope.listStudent = [];
@@ -44,6 +70,18 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
 myApp.controller("changePasswordCtrl", function ($scope, $http) {
   // Assume you have the user's email when they are logged in
   // Replace 'userLoggedInEmail' with the actual way you store the logged-in user's email
+  if (sessionStorage.getItem("username") === null) {
+    Swal.fire({
+      title: "Bạn cần phải đăng nhập!!!",
+      icon: "error",
+      confirmButtonText: "OK",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Nếu người dùng ấn "OK", chuyển trang
+        window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
+      }
+    });
+  }
   $scope.email = "userLoggedInEmail";
 
   $scope.changePassword = function () {
@@ -55,23 +93,32 @@ myApp.controller("changePasswordCtrl", function ($scope, $http) {
     }
 
     // Find the user with the provided email
-    const user = $scope.listStudent.find((s) => s.email === $scope.email);
+    const user = $scope.listStudent.find((s) => s.email === $scope.getStudent.email);
 
     if (user) {
       // Prepare data to send to JSON Server
       const data = {
+        id: user.id,
         username: user.username,
-        currentPassword: $scope.currentPassword,
-        newPassword: $scope.newPassword,
+        password: $scope.newPassword,
       };
 
       // Assume that the JSON Server endpoint for changing passwords is different
       // Adjust the endpoint according to your JSON Server setup
       $http
-        .put(`http://localhost:3000/changePasswordEndpoint`, data)
+        .patch(`http://localhost:3000/listStudent/` + data.id, data)
         .then(function (response) {
           // Handle success response
-          console.log("Password changed successfully");
+          Swal.fire({
+            title: "Đổi mật khẩu thành công",
+            icon: "success",
+            confirmButtonText: "OK",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Nếu người dùng ấn "OK", chuyển trang
+              window.location.href = "http://127.0.0.1:5502/index.html#!/home";
+            }
+          });
         })
         .catch(function (error) {
           // Handle error response
@@ -83,8 +130,6 @@ myApp.controller("changePasswordCtrl", function ($scope, $http) {
     }
   };
 });
-
-
 
 myApp.controller("subjectCtrl", function ($scope, $http) {
   $scope.list_subject = [];
@@ -121,9 +166,9 @@ myApp.config(function ($routeProvider) {
       templateUrl: "assets/html/quiz.html",
       controller: "quizCtrl",
     })
-    .when("/account", {
-      templateUrl: "assets/html/account.html",
-    })
+    // .when("/account", {
+    //   templateUrl: "assets/html/account.html",
+    // })
     .when("/user:accountId", {
       templateUrl: "assets/html/user_details.html",
     })
@@ -237,26 +282,28 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
     $http.get("db/Quizs/" + $scope.idMH + ".js").then(
       function (d) {
         $scope.caccauhoi = d.data;
-        $scope.caccauhoi.map((item) => {
-          if ($scope.listQuestions.length < 10) {
-            var random = Math.floor(Math.random() * $scope.caccauhoi.length);
-            var flag = false;
-            if ($scope.listQuestions.length == 0) {
-              $scope.listQuestions.push($scope.caccauhoi[random]);
-            } else {
-              $scope.listQuestions.map((i) => {
-                if (i.Id == random) {
-                  flag = true;
-                }
-              });
-              if (flag == false) {
-                $scope.listQuestions.push($scope.caccauhoi[random]);
-              }
-            }
-          }
-        });
+        $scope.caccauhoi.sort(() => Math.random() - 0.5);
+        // console.log($scope.caccauhoi);
+        // $scope.caccauhoi.map((item) => {
+        //   if ($scope.listQuestions.length < 10) {
+        //     var random = Math.floor(Math.random() * $scope.caccauhoi.length);
+        //     var flag = false;
+        //     if ($scope.listQuestions.length == 0) {
+        //       $scope.listQuestions.push($scope.caccauhoi[random]);
+        //     } else {
+        //       $scope.listQuestions.map((i) => {
+        //         if (i.Id == random) {
+        //           flag = true;
+        //         }
+        //       });
+        //       if (flag == false) {
+        //         $scope.listQuestions.push($scope.caccauhoi[random]);
+        //       }
+        //     }
+        //   }
+        // });
         $scope.totalQuestions = $scope.questions.length;
-        $scope.currentQuestion = $scope.listQuestions[$scope.currentIndex];
+        $scope.currentQuestion = $scope.caccauhoi[$scope.currentIndex];
         console.log($scope.currentQuestion);
         $scope.rightAnswer = $scope.currentQuestion.AnswerId;
         $scope.idOfCurrentQuestion = $scope.currentQuestion.Id;
@@ -472,43 +519,20 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
 });
 
 // login
-myApp.controller("loginCtrl", function ($scope, $http, $location) {
-  $scope.listStudent = [];
-  $scope.getStudent = {};
-  $scope.isLoggedIn = false;
-  $scope.loggedInUser = "";
-
-  $http.get("db/Students.json").then(
-    function (d) {
-      $scope.listStudent = d.data.listStudent;
-    },
-    function (error) {
-      alert("Lỗi");
-    }
-  );
-
-  var checkLoginStatus = function () {
-    var storedUsername = sessionStorage.getItem("username");
-    $scope.isLoggedIn = !!storedUsername;
-
-    // Nếu đã đăng nhập, gán tên người dùng cho biến loggedInUser
-    if ($scope.isLoggedIn) {
-      $scope.loggedInUser = storedUsername;
-    }
-  };
-
-  checkLoginStatus();
+myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
+  $rootScope.isLoggedIn = false;
 
   $scope.login = function () {
-    var isLoggedIn = false;
+    // $scope.currentUser = "";
+    $rootScope.currentUser = $scope.username;
+    $rootScope.isLoggedIn = true;
     for (var i = 0; i < $scope.listStudent.length; i++) {
       if (
         $scope.username == $scope.listStudent[i].username &&
         $scope.password == $scope.listStudent[i].password
       ) {
-        $scope.getStudent = $scope.listStudent[i];
+        $rootScope.getStudent = $scope.listStudent[i];
         sessionStorage.setItem("username", $scope.username);
-
         // Cập nhật loggedInUser khi đăng nhập
         $scope.loggedInUser = $scope.username;
 
@@ -521,11 +545,12 @@ myApp.controller("loginCtrl", function ($scope, $http, $location) {
     if (isLoggedIn) {
       Swal.fire({
         title: "Đăng nhập thành công",
+        text: `Chào mừng bạn ${$scope.currentUser}`,
         icon: "success",
       }).then((result) => {
         if (result.isConfirmed) {
           // Nếu người dùng ấn "OK", chuyển trang
-          window.location.href = "after-login.html";
+          window.location.href = "http://127.0.0.1:5502/index.html#!/home";
         }
       });
     } else {
@@ -534,13 +559,7 @@ myApp.controller("loginCtrl", function ($scope, $http, $location) {
         icon: "error",
       });
     }
-    console.log("isLoggedIn:", isLoggedIn);
-  };
-
-  $scope.logout = function () {
-    sessionStorage.removeItem("username");
-    $scope.loggedInUser = "";
-    checkLoginStatus();
+    $scope.checkLoginStatus();
   };
 });
 
