@@ -1,16 +1,16 @@
 <div class="container mb-5 mt-5 p-5">
   <!-- <div class="text" ng-repeat="sub in list_subject"><h1>{{sub.Name}}</h1></div> -->
   <div class="card" ng-if="handed == false">
-    <div class="card-header">
-      {{currentQuestion.Text}}
-      <p class="float-end top-0 wow fadeInUp text-danger" data-wow-delay="0.3s" id="time">
+    <div class="card-header text-center" style="height: 150px;">
+      <p class="text-danger fw-medium fs-5" data-wow-delay="0.3s" id="time">
         Thời gian làm bài: {{timeHanded}}
       </p>
+      <p class="fw-medium fs-4">{{currentQuestion.Text}}</p>
     </div>
-    <div class="card-body">
+    <div class="card-body" style="height: 200px;">
       <div class="card-text form-check" ng-repeat="pa in currentQuestion.Answers">
         <input
-          class="form-check-input"
+          class="form-check-input border-2"
           type="radio"
           id="pa"
           name="pa"
@@ -20,11 +20,11 @@
         <label class="form-check-label" for="pa">{{pa.Text}}</label>
       </div>
     </div>
-    <div class="card-footer text-muted">Điểm: {{ch.Marks}}</div>
-    <div class="card-footer">
-      <button class="btn btn-warning" ng-click="prev()">Câu sau</button>
-      <button class="btn btn-warning" ng-click="next()">Câu trước</button>
-      <button class="btn btn-success" ng-click="handIn()">Nộp bài</button>
+    <!-- <div class="card-footer text-muted">Điểm: {{ch.Marks}}</div> -->
+    <div class="card-footer text-center">
+      <button class="btn btn-primary py-2 fw-medium" ng-click="next()" style="background-color: #58c002;">Câu trước</button>
+      <button class="btn btn-primary py-2 fw-medium" ng-click="prev()" style="background-color: #58c002;">Câu sau</button>
+      <button class="btn btn-primary py-2 fw-medium" ng-click="handIn()" style="background-color: #58c002;">Nộp bài</button>
     </div>
   </div>
   <div class="container-xxl py-5" ng-if="handed === true">
@@ -78,10 +78,10 @@
     </div>
     <div class="border border-2">
       <div class="d-flex justify-content-center wow fadeInUp mt-4 mb-5" data-wow-delay="0.3s">
-        <button class="btn btn-success" ng-click="again()">
+        <button class="btn btn-primary" ng-click="again()" style="background-color: #58c002;">
           <i class="bi bi-arrow-clockwise"></i> Làm lại
         </button>
-        <button class="btn btn-success ms-3 me-3" ng-click="showAnswer()">
+        <button class="btn btn-primary ms-3 me-3" ng-click="showAnswer()" style="background-color: #58c002;">
           <i class="bi bi-view-list"></i> Xem đáp án
         </button>
       </div>

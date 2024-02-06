@@ -1,5 +1,5 @@
 var myApp = angular.module("myApp", ["ngRoute"]);
-myApp.controller("myCtrl", function ($scope, $http, $rootScope) {
+myApp.controller("myCtrl", function ($scope, $http, $rootScope, $location) {
   $http
     .get(`http://localhost:3000/listStudent`)
     .then(function (response) {
@@ -14,7 +14,7 @@ myApp.controller("myCtrl", function ($scope, $http, $rootScope) {
   $scope.logout = function () {
     sessionStorage.removeItem("username");
     $rootScope.isLoggedIn = false;
-    location.reload();
+    window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
   };
 
   $rootScope.checkLoginStatus = function () {
@@ -25,6 +25,7 @@ myApp.controller("myCtrl", function ($scope, $http, $rootScope) {
       $rootScope.getStudent = $scope.listStudent.find((s) => s.username === storedUsername);
     }
   };
+  
 });
 
 myApp.controller("forgotCtrl", function ($scope, $http) {
@@ -282,26 +283,26 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
     $http.get("db/Quizs/" + $scope.idMH + ".js").then(
       function (d) {
         $scope.caccauhoi = d.data;
-        $scope.caccauhoi.sort(() => Math.random() - 0.5);
+        // $scope.caccauhoi.sort(() => Math.random() - 0.5);
         // console.log($scope.caccauhoi);
-        // $scope.caccauhoi.map((item) => {
-        //   if ($scope.listQuestions.length < 10) {
-        //     var random = Math.floor(Math.random() * $scope.caccauhoi.length);
-        //     var flag = false;
-        //     if ($scope.listQuestions.length == 0) {
-        //       $scope.listQuestions.push($scope.caccauhoi[random]);
-        //     } else {
-        //       $scope.listQuestions.map((i) => {
-        //         if (i.Id == random) {
-        //           flag = true;
-        //         }
-        //       });
-        //       if (flag == false) {
-        //         $scope.listQuestions.push($scope.caccauhoi[random]);
-        //       }
-        //     }
-        //   }
-        // });
+        $scope.caccauhoi.map((item) => {
+          if ($scope.listQuestions.length < 10) {
+            var random = Math.floor(Math.random() * $scope.caccauhoi.length);
+            var flag = false;
+            if ($scope.listQuestions.length == 0) {
+              $scope.listQuestions.push($scope.caccauhoi[random]);
+            } else {
+              $scope.listQuestions.map((i) => {
+                if (i.Id == random) {
+                  flag = true;
+                }
+              });
+              if (flag == false) {
+                $scope.listQuestions.push($scope.caccauhoi[random]);
+              }
+            }
+          }
+        });
         $scope.totalQuestions = $scope.questions.length;
         $scope.currentQuestion = $scope.caccauhoi[$scope.currentIndex];
         console.log($scope.currentQuestion);
@@ -521,6 +522,14 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
 // login
 myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
   $rootScope.isLoggedIn = false;
+  $http.get("db/Students.json").then(
+    function (d) {
+      $scope.listStudent = d.data.listStudent;
+    },
+    function (error) {
+      alert("Lỗi");
+    }
+  );
 
   $scope.login = function () {
     // $scope.currentUser = "";

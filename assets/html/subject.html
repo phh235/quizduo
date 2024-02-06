@@ -13,28 +13,19 @@
           <div class="card-footer">
             <a
               href="#!/quiz/{{sub.Id}}/{{sub.Name}}"
-              class="btn text-light border px-3 py-2 fs-5"
-              style="background-color: #58c002"
+              class="btn btn-primary text-light py-3 fw-medium"
+              style="background-color: #58c002; text-transform: none;"
               >Làm ngay</a
             >
           </div>
         </div>
       </div>
     </div>
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center p-5">
-        <li class="page-item">
-          <a class="page-link text-light bg-primary" href="" ng-click="prev()"
-            ><span><i class="bi bi-arrow-left"></i></span> Trang trước</a
-          >
-        </li>
-        <li class="page-item">
-          <a class="page-link text-light bg-primary" href="" ng-click="next()"
-            >Trang tiếp <span><i class="bi bi-arrow-right"></i></span
-          ></a>
-        </li>
-      </ul>
-    </nav>
+    
+    <div class="text-center mt-5">
+      <button class="btn btn-primary py-2 fw-medium" ng-click="prev()" style="background-color: #58c002;">Trang trước</button>
+      <button class="btn btn-primary py-2 fw-medium" ng-click="next()" style="background-color: #58c002;">Trang tiếp</button>
+    </div>
   </div>
 </section>
 <!-- End Values Section -->

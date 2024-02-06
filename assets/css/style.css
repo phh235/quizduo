@@ -34,7 +34,7 @@ textarea:hover {
 } */
 /* END CURSOR ANIMATION */
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Lexend Deca", sans-serif;
   color: #313030;
   /* cursor: none; */
   overflow-x: hidden;
@@ -60,7 +60,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Nunito", sans-serif;
+  font-family: "Lexend Deca", sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -180,7 +180,7 @@ h6 {
   margin: 0;
   line-height: 0;
   font-weight: 900;
-  font-family: "Nunito", sans-serif;
+  font-family: "Lexend Deca", sans-serif;
 }
 
 #header .logo h1 a,
@@ -233,7 +233,7 @@ h6 {
   justify-content: space-between;
   padding: 10px 0 10px 30px;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 500;
   color: #000;
   white-space: nowrap;
   transition: 0.3s;
@@ -471,8 +471,8 @@ h6 {
 
 #hero h1 {
   margin: 0 0 10px 0;
-  font-size: 53px;
-  font-family: "Nunito";
+  font-size: 55px;
+  font-family: "Lexend Deca";
   font-weight: 700;
   line-height: 56px;
   color: #fff;
@@ -496,7 +496,7 @@ h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Nunito", sans-serif;
+  font-family: "Lexend Deca", sans-serif;
   font-weight: 400;
   font-size: 16px;
   letter-spacing: 1px;
@@ -951,7 +951,8 @@ section {
 # Values
 --------------------------------------------------------------*/
 .values .card {
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); */
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   padding: 0px 20px 20px 20px;
   position: relative;
   width: 100%;
@@ -1448,7 +1449,7 @@ section {
   transition: none;
   font-size: 14px;
   font-weight: 400;
-  font-family: "Nunito", sans-serif;
+  font-family: "Lexend Deca", sans-serif;
   font-weight: 600;
   box-shadow: 0 3px 7px rgba(255, 88, 33, 0.4);
   transition: 0.3s;
@@ -2381,7 +2382,7 @@ section {
 .counts .count-box p {
   padding: 0;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Lexend Deca", sans-serif;
   font-size: 15px;
   font-weight: 700;
 }
@@ -2417,7 +2418,6 @@ section {
   cursor: pointer;
   border-radius: 17px;
 }
-
 /* Important stuff below */
 .btn-primary {
   background-color: #58cc02;
@@ -2430,7 +2430,7 @@ section {
 }
 
 .formCtrl {
-  width: 390px;
+  width: 415px;
   border: 2px solid #e5e5e5;
   border-radius: 12px;
 }
@@ -2497,7 +2497,7 @@ label.box .circle {
 
 .page-item {
   padding: 10px;
-  font-family: "Nunito";
+  font-family: "Lexend Deca";
 }
 
 .alert1 {
@@ -2507,3 +2507,7 @@ label.box .circle {
   border-radius: 5px;
   padding: 5px;
 }
+.bg-secondary {
+  background-color: #bfd8af;
+}
+
