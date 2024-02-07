@@ -1,19 +1,53 @@
-
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
   <div class="container" data-aos="fade-down">
-    <h1>Chào mừng bạn tới <span style="color: #58cc02; font-weight: 800;">CodeQuiz</span></h1>
+    <h1>Chào mừng bạn tới <span style="color: #58cc02; font-weight: 800">CodeQuiz</span></h1>
     <h2 style="font-weight: 550">
       Website của chúng tôi đem đến cho bạn những bài học bổ ích về lập trình.
     </h2>
-    <!-- <div class="d-flex align-items-center">
-        <i class="bx bxs-right-arrow-alt get-started-icon"></i>
-        <a href="#about" class="btn-get-started scrollto" style="font-weight: 700;">Xem thêm</a>
-      </div> -->
+    <div class="d-flex align-items-center">
+      <i class="bx bxs-right-arrow-alt get-started-icon"></i>
+      <a
+        href="#!about"
+        class="btn-get-started scrollto"
+        style="font-weight: 500"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        >Xem thêm</a
+      >
+    </div>
   </div>
 </section>
 <!-- End Hero -->
-
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  tabindex="-1"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <iframe
+          width="100%"
+          height="100%"
+          src="https://www.youtube-nocookie.com/embed/IEHiY8scAKI?si=6nHQUm-zDeM5CRW2"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</div>
 <main id="main">
   <!-- ======= Why Us Section ======= -->
   <section id="why-us" class="why-us">
@@ -21,8 +55,8 @@
       <div class="row">
         <div class="col-xl-4 col-lg-5" data-aos="fade-up">
           <div class="content">
-            <h3 style="font-weight: 700;">Tại sao nên chọn website của chúng tôi?</h3>
-            <p>
+            <h3 style="font-weight: 700">Tại sao nên chọn website của chúng tôi?</h3>
+            <p class="fw-medium">
               Tại đây, chúng tôi cung cấp những bài học hữu ích để bạn có thể thu thập kiến thức từ
               cơ bản đến nâng cao về nhiều khía cạnh trong các ngôn ngữ lập trình phổ biến.
             </p>
@@ -85,10 +119,6 @@
     </div>
   </section>
   <!-- End Why Us Section -->
-  <!-- Start services -->
-  
-  <!-- End services -->
-  <!-- ======= About Section ======= -->
 
   <!-- Count Section -->
   <section id="counts" class="counts">
@@ -103,7 +133,8 @@
                 data-purecounter-end="2354"
                 data-purecounter-duration="1"
                 class="purecounter"
-              >1,235</span>
+                >1,235</span
+              >
               <p>Khách hàng</p>
             </div>
           </div>
@@ -118,7 +149,8 @@
                 data-purecounter-end="21"
                 data-purecounter-duration="1"
                 class="purecounter"
-              >21</span>
+                >21</span
+              >
               <p>Bài học</p>
             </div>
           </div>
@@ -133,7 +165,8 @@
                 data-purecounter-end="100"
                 data-purecounter-duration="1"
                 class="purecounter"
-              >100</span>
+                >100</span
+              >
               <p>Nhân viên hỗ trợ</p>
             </div>
           </div>
@@ -148,7 +181,8 @@
                 data-purecounter-end="15"
                 data-purecounter-duration="1"
                 class="purecounter"
-              >923</span>
+                >923</span
+              >
               <p>Người học chăm chỉ</p>
             </div>
           </div>
@@ -157,168 +191,49 @@
     </div>
   </section>
   <!-- End Counts Section -->
-
-  <!-- ======= Values Section ======= -->
-  <!-- <section id="values" class="values">
-      <div class="container">
-
-        <div class="row">
-          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-            <div class="card" style="background-image: url(assets/img/astronauts-leaving-cabin-science-fiction-illustrations-digital-painting\ \(1\).jpg);">
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Nhiệm vụ</a></h5>
-                <p class="card-text">Giúp bạn nâng cao kiến thức về lập trình.</p>
-                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="100">
-            <div class="card" style="background-image: url(assets/img/challenger-stands-front-spooky-castle-illustration.jpg);">
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Kế hoạch</a></h5>
-                <p class="card-text">Xây dựng nền tảng học kiến thức lập trình online chất lượng nhất.</p>
-                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
-              </div>
-            </div>
-
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="card" style="background-image: url(assets/img/multi-dimensional-urban-space-exotic-concepts-digital-painting.jpg);">
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Tầm nhìn</a></h5>
-                <p class="card-text">Phổ cập rộng rãi đến mọi người.</p>
-                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="card" style="background-image: url(assets/img/world-collapse-doomsday-scene-digital-painting.jpg);">
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Chăm sóc</a></h5>
-                <p class="card-text">Nhiệt tình hỗ trợ 24/7.</p>
-                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>End Values Section -->
-
-  <!-- ======= Testimonials Section ======= -->
-  <!-- <section id="testimonials" class="testimonials">
-      <div class="container position-relative" data-aos="fade-up">
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Bill Gates</h3>
-                <h4>Ceo &amp; Founder MicroSoft</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Tôi sẽ mua lại nó.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="https://cdn.tuoitre.vn/thumb_w/480/2019/4/2/kha-banh-1-15541913985251541593864-1554191451567108046830.png" class="testimonial-img" alt="">
-                <h3>Ngô Bá Khá</h3>
-                <h4>Cyber Gangster</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Đó là do bạn không chơi đồ đấy bạn ạ
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Nền tảng học như thế này thật sự rất tuyệt.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Học rất tốt. Tôi rất thích nó!
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Dịch vụ rất tốt, đầy đủ câu hỏi.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section> -->
-    <section id="values" class="values" data-aos="fade-up">
- <section id="values" class="values" data-aos="fade-up">
+<section id="values" class="values" data-aos="fade-up">
   <div class="container" ng-controller="subjectCtrl">
     <h1 style="font-weight: 800; color: #58cc02" class="text-center">Môn học</h1>
 
     <div class="row">
       <div
         class="col-md-3 d-flex align-items-stretch mt-4"
-        ng-repeat="sub in list_subject|limitTo:4:begin"
+        ng-repeat="sub in list_subject|limitTo:pageSize:start"
       >
-        <div class="card text-center py-1">
-          <div class="card-header" style="font-weight: 700">{{sub.Name}}</div>
-          <div class="card-body"><img src="/assets/img/logos/{{sub.Logo}}" alt="" /></div>
+        <div class="card text-center py-4">
+          <div class="card-header" style="font-weight: 500; min-height: 80px; font-size: 21px;">{{sub.Name}}</div>
+          <div class="card-body mb-5"><img src="/assets/img/logos/{{sub.Logo}}" alt="" /></div>
           <div class="card-footer">
             <a
               href="#!/quiz/{{sub.Id}}/{{sub.Name}}"
-              class="btn btn-primary text-light"
-              style="background-color: #58c002"
-              >Làm ngay</a
-            >
+              class="btn btn-primary text-light py-3 fw-medium"
+              style="background-color: #58c002; text-transform: none"
+              >BẮT ĐẦU LÀM <i class="bi bi-arrow-up-right"></i
+            ></a>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="text-center mt-5">
-      <button class="btn btn-primary" ng-click="prev()" style="background-color: #58c002;">Trang trước</button>
-      <button class="btn btn-primary" ng-click="next()" style="background-color: #58c002;">Trang tiếp</button>
+
+    <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="100">
+      <button
+        class="btn btn-primary1 fw-medium text-light"
+        ng-click="prev()"
+        style="background-color: #1cb0f6"
+        ng-show="start != 0"
+      >
+        <i class="bi bi-arrow-bar-left"></i> Trang trước
+      </button>
+      <button
+        class="btn btn-primary1 fw-medium text-light"
+        ng-click="next()"
+        style="background-color: #1cb0f6"
+        ng-show="start + pageSize < list_subject.length"
+      >
+        Trang tiếp <i class="bi bi-arrow-bar-right"></i>
+      </button>
     </div>
   </div>
 </section>
 <!-- End Values Section -->
-
-</section>
-<!-- End Values Section -->
-
 </main>
-
-

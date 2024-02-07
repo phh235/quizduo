@@ -1,15 +1,83 @@
 <div class="container mb-5 mt-5 p-5">
   <!-- <div class="text" ng-repeat="sub in list_subject"><h1>{{sub.Name}}</h1></div> -->
   <div class="card" ng-if="handed == false">
-    <div class="card-header text-center" style="height: 150px;">
-      <p class="text-danger fw-medium fs-5" data-wow-delay="0.3s" id="time">
-        Thời gian làm bài: {{timeHanded}}
-      </p>
-      <p class="fw-medium fs-4">{{currentQuestion.Text}}</p>
+    <div class="card-header text-center" style="min-height: 230px">
+      <p class="text-danger fw-medium fs-5" id="time">Thời gian làm bài: {{timeHanded}}</p>
+      <p class="fw-medium fs-4 mt-5">{{currentIndex + 1}}. {{currentQuestion.Text}}</p>
     </div>
-    <div class="card-body" style="height: 200px;">
-      <div class="card-text form-check" ng-repeat="pa in currentQuestion.Answers">
-        <input
+    <div class="card-body" style="min-height: 230px">
+      <div class="card-text">
+        <div class="row">
+          <div
+            class="col-3"
+            value="{{pa.Id}}"
+            ng-repeat="pa in currentQuestion.Answers"
+            ng-if="currentQuestion.Answers.length == 4"
+          >
+            <button
+              class="btn quiz-btn text-center"
+              ng-click="selected(pa.Id)"
+              style="max-width: 290px; min-width: 290px; max-height: 210px; min-height: 210px;"
+            >
+              {{pa.Text}}
+            </button>
+          </div>
+          <div
+            class="col-2 text-center me-4 ms-2"
+            value="{{pa.Id}}"
+            ng-repeat="pa in currentQuestion.Answers"
+            ng-if="currentQuestion.Answers.length == 5"
+          >
+            <button
+              class="btn quiz-btn text-center"
+              ng-click="selected(pa.Id)"
+              style="
+                min-width: 230px;
+                max-width: 230px;
+                max-height: 210px;
+                min-height: 210px;
+                position: relative;
+              "
+            >
+              {{pa.Text}}
+            </button>
+          </div>
+          <div
+            class="col-2"
+            value="{{pa.Id}}"
+            ng-repeat="pa in currentQuestion.Answers"
+            ng-if="currentQuestion.Answers.length == 6"
+          >
+            <button
+              class="btn quiz-btn text-center"
+              ng-click="selected(pa.Id)"
+              style="max-width: 190px; min-width: 190px; max-height: 210px; min-height: 210px"
+            >
+              {{pa.Text}}
+            </button>
+          </div>
+          <div
+            class="col-6 text-center"
+            value="{{pa.Id}}"
+            ng-repeat="pa in currentQuestion.Answers"
+            ng-if="currentQuestion.Answers.length < 4"
+          >
+            <button
+              class="btn quiz-btn text-center"
+              ng-click="selected(pa.Id)"
+              style="
+                max-width: 590px;
+                min-width: 590px;
+                max-height: 210px;
+                min-height: 210px;
+                position: relative;
+              "
+            >
+              {{pa.Text}}
+            </button>
+          </div>
+        </div>
+        <!-- <input
           class="form-check-input border-2"
           type="radio"
           id="pa"
@@ -17,14 +85,33 @@
           value="{{pa.Id}}"
           ng-click="selected(pa.Id)"
         />
-        <label class="form-check-label" for="pa">{{pa.Text}}</label>
+        <label class="form-check-label" for="pa">{{pa.Text}}</label> -->
       </div>
     </div>
     <!-- <div class="card-footer text-muted">Điểm: {{ch.Marks}}</div> -->
-    <div class="card-footer text-center">
-      <button class="btn btn-primary py-2 fw-medium" ng-click="next()" style="background-color: #58c002;">Câu trước</button>
-      <button class="btn btn-primary py-2 fw-medium" ng-click="prev()" style="background-color: #58c002;">Câu sau</button>
-      <button class="btn btn-primary py-2 fw-medium" ng-click="handIn()" style="background-color: #58c002;">Nộp bài</button>
+    <div class="card-footer text-center" style="min-height: 60px">
+      <button
+        class="btn btn-primary py-2 fw-medium"
+        ng-click="prev()"
+        style="background-color: #58c002"
+        ng-show="currentIndex > 0"
+      >
+        <i class="bi bi-arrow-bar-left"></i> Câu trước
+      </button>
+      <button
+        class="btn btn-primary py-2 fw-medium"
+        ng-click="next()"
+        style="background-color: #58c002"
+      >
+        Câu sau <i class="bi bi-arrow-bar-right"></i>
+      </button>
+      <button
+        class="btn btn-primary1 py-2 fw-medium"
+        ng-click="handIn()"
+        style="background-color: #1cb0f6; color: #fff"
+      >
+        Nộp bài <i class="bi bi-arrow-bar-up"></i>
+      </button>
     </div>
   </div>
   <div class="container-xxl py-5" ng-if="handed === true">
@@ -45,10 +132,14 @@
                       bài:
                       {{renderTime }} <i class="bi bi-stopwatch-fill"></i></p>
               </div> -->
-        <div class="col-5 rounded bg-secondary" style="height: 120px">
-          <label for="" class="h5 wow fadeInUp mt-3 h5 text-light" data-wow-delay="0.3s"
-            >Câu đúng <i class="bi bi-info-circle"></i
-          ></label>
+        <div class="col-5 rounded" style="height: 120px; background-color: #99bc85">
+          <label
+            for=""
+            class="d-flex justify-content-center mt-3 h5 text-light"
+            data-wow-delay="0.3s"
+            >Câu đúng
+            <!-- <i class="bi bi-info-circle"></i> -->
+          </label>
           <div class="skills mt-3">
             <div class="skill">
               <div class="skill-bar">
@@ -62,27 +153,31 @@
           </div>
         </div>
         <div
-          class="col-5 rounded d-flex justify-content-between bg-secondary"
-          style="height: 120px"
+          class="col-5 rounded d-flex justify-content-between"
+          style="height: 120px; background-color: #99bc85"
         >
-          <div class="col-2">
-            <label for="" class="h5 wow fadeInUp mt-3 h5 text-light" data-wow-delay="0.3s"
-              >Điểm số</label
-            ><br />
-            <label for="" class="h5 wow fadeInUp mt-3 h5 text-light" data-wow-delay="0.3s"
-              >{{totalPoint}}</label
-            >
+          <div class="col-3">
+            <label for="" class="mt-3 h5 text-light">Điểm số</label><br />
+            <label for="" class="h5 wow fadeInUp mt-3 h5 text-light">{{totalPoint}}</label>
           </div>
         </div>
       </div>
     </div>
-    <div class="border border-2">
-      <div class="d-flex justify-content-center wow fadeInUp mt-4 mb-5" data-wow-delay="0.3s">
-        <button class="btn btn-primary" ng-click="again()" style="background-color: #58c002;">
-          <i class="bi bi-arrow-clockwise"></i> Làm lại
+    <div class="border">
+      <div class="d-flex justify-content-center wow fadeInUp mt-4 mb-5">
+        <button
+          class="btn btn-primary fw-medium"
+          ng-click="again()"
+          style="background-color: #58c002"
+        >
+          Làm lại <i class="bi bi-arrow-clockwise"></i>
         </button>
-        <button class="btn btn-primary ms-3 me-3" ng-click="showAnswer()" style="background-color: #58c002;">
-          <i class="bi bi-view-list"></i> Xem đáp án
+        <button
+          class="btn btn-primary ms-3 me-3 fw-medium"
+          ng-click="showAnswer()"
+          style="background-color: #58c002"
+        >
+          Xem đáp án <i class="bi bi-view-list"></i>
         </button>
       </div>
 

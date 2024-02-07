@@ -12,6 +12,17 @@ myApp.controller("myCtrl", function ($scope, $http, $rootScope, $location) {
     });
 
   $scope.logout = function () {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Đã đăng xuất",
+      imageUrl: "https://design.duolingo.com/60aa5cd702b56a7a5e6b.svg",
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: "Custom image",
+      showConfirmButton: false,
+      timer: 1700,
+    });
     sessionStorage.removeItem("username");
     $rootScope.isLoggedIn = false;
     window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
@@ -25,7 +36,6 @@ myApp.controller("myCtrl", function ($scope, $http, $rootScope, $location) {
       $rootScope.getStudent = $scope.listStudent.find((s) => s.username === storedUsername);
     }
   };
-  
 });
 
 myApp.controller("forgotCtrl", function ($scope, $http) {
@@ -51,10 +61,15 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
     if (user) {
       // Hiển thị SweetAlert với thông báo password
       Swal.fire({
+        imageUrl: "https://design.duolingo.com/61ed15447ba714a5e160.svg",
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
         title: "Mật khẩu của bạn là:",
         text: user.password,
         icon: "info",
         confirmButtonText: "OK",
+        confirmButtonColor: "#3085d6",
       });
     } else {
       // Hiển thị SweetAlert với thông báo email không tồn tại
@@ -139,17 +154,30 @@ myApp.controller("subjectCtrl", function ($scope, $http) {
     console.log($scope.list_subject);
   });
 
-  $scope.begin = 0;
-  $scope.pageCount = Math.ceil($scope.list_subject.length / 4);
+  // $scope.begin = 0;
+  // $scope.pageCount = Math.ceil($scope.list_subject.length / 4);
+
+  // $scope.prev = function () {
+  //   if ($scope.begin > 0) {
+  //     $scope.begin -= 4;
+  //   }
+  // };
+  // $scope.next = function () {
+  //   if ($scope.begin > ($scope.pageCount - 1) * 4) {
+  //     $scope.begin += 4;
+  //   }
+  // };
+  $scope.start = 0;
+  $scope.pageSize = 4;
 
   $scope.prev = function () {
-    if ($scope.begin > 0) {
-      $scope.begin -= 4;
+    if ($scope.start > 0) {
+      $scope.start -= $scope.pageSize;
     }
   };
   $scope.next = function () {
-    if ($scope.begin > ($scope.pageCount - 1) * 4) {
-      $scope.begin += 4;
+    if ($scope.start < $scope.list_subject.length - $scope.pageSize) {
+      $scope.start += $scope.pageSize;
     }
   };
 });
@@ -221,6 +249,7 @@ myApp.controller("registerCtrl", function ($scope, $http) {
         Swal.fire({
           title: "Đăng ký thành công",
           icon: "success",
+          confirmButtonColor: "#3085d6",
         }).then(function () {
           // Chuyển hướng sau khi người dùng ấn OK
           window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
@@ -238,6 +267,18 @@ myApp.controller("registerCtrl", function ($scope, $http) {
 
 // quiz
 myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
+  if (sessionStorage.getItem("username") === null) {
+    Swal.fire({
+      title: "Bạn cần phải đăng nhập!!!",
+      icon: "error",
+      confirmButtonText: "OK",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Nếu người dùng ấn "OK", chuyển trang
+        window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
+      }
+    });
+  }
   $scope.caccauhoi = [];
   $scope.idMH = $routeParams.idMH;
   $scope.tenMH = $routeParams.tenMH;
@@ -304,7 +345,7 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
           }
         });
         $scope.totalQuestions = $scope.questions.length;
-        $scope.currentQuestion = $scope.caccauhoi[$scope.currentIndex];
+        $scope.currentQuestion = $scope.listQuestions[$scope.currentIndex];
         console.log($scope.currentQuestion);
         $scope.rightAnswer = $scope.currentQuestion.AnswerId;
         $scope.idOfCurrentQuestion = $scope.currentQuestion.Id;
@@ -403,7 +444,17 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
       ];
       $scope.saveToLocal($scope.idMH, firstAnswer);
     }
-
+    setTimeout(() => {
+      $scope.$apply(function () {
+        if ($scope.currentIndex < 9) {
+          $scope.currentIndex += 1;
+          getQuestion();
+        } else {
+          $scope.currentIndex = 0;
+          getQuestion();
+        }
+      });
+    }, 1000);
     console.log("localdata");
     console.log(localData);
   };
@@ -420,9 +471,12 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
   };
   $scope.handIn = () => {
     Swal.fire({
-      position: "middle",
-      icon: "success",
       title: "Nộp bài thành công!",
+      imageUrl: "https://design.duolingo.com/266788168c5f135b35e3.svg",
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: "Custom image",
+      icon: "success",
       showConfirmButton: false,
       timer: 1500,
     });
@@ -554,8 +608,13 @@ myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
     if (isLoggedIn) {
       Swal.fire({
         title: "Đăng nhập thành công",
+        imageUrl: "https://design.duolingo.com/e69974f04b05dcf07f2a.svg",
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
         text: `Chào mừng bạn ${$scope.currentUser}`,
         icon: "success",
+        confirmButtonColor: "#3085d6",
       }).then((result) => {
         if (result.isConfirmed) {
           // Nếu người dùng ấn "OK", chuyển trang

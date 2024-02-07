@@ -169,6 +169,7 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
   background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
 #header.header-fixed {
@@ -446,8 +447,8 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 60vh;
-  background: url("../img/hero-bg.jpg") center center;
+  height: 80vh;
+  background: url("https://design.duolingo.com/3eb9efb1b25e923c24eb.svg") center center;
   background-size: cover;
   position: relative;
   z-index: 1;
@@ -761,7 +762,7 @@ section {
 }
 
 .about .video-box {
-  background: url("../img/about-img.jpg") center center no-repeat;
+  background: url("https://design.duolingo.com/3eb9efb1b25e923c24eb.svg") center center no-repeat;
   background-size: cover;
   min-height: 500px;
 }
@@ -983,9 +984,11 @@ section {
 
 .card-header {
   background-color: #fff;
+  border: none;
 }
 .card-footer {
   background-color: #fff;
+  border: none;
 }
 
 .values .card-text {
@@ -2417,14 +2420,28 @@ section {
   font-weight: bold;
   cursor: pointer;
   border-radius: 17px;
-}
-/* Important stuff below */
-.btn-primary {
   background-color: #58cc02;
   box-shadow: 0 5px 0 #58a700;
 }
 
 .btn-primary:active {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+.btn-primary1 {
+  all: unset;
+  display: inline-block;
+  padding: 15px 20px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 17px;
+  background-color: #1cb0f6;
+  box-shadow: 0 5px 0 #2b70c9;
+}
+
+.btn-primary1:active {
   box-shadow: none;
   transform: translateY(5px);
 }
@@ -2511,3 +2528,61 @@ label.box .circle {
   background-color: #bfd8af;
 }
 
+/* .quiz-btn {
+  padding: 50px;
+  background-color: #d4e7c5;
+}
+.quiz-btn:hover {
+  background-color: #bfd8af;
+}
+.quiz-btn:focus {
+  background-color: #99bc85;
+  border: 2px solid #bfd8af;
+} */
+/* 
+.quiz-btn {
+  font-size: 20px;
+  background: #BFD8AF;
+  color: #3d3d3d;
+  border: 1px solid #BFD8AF;
+  border-radius: 4px;
+  padding: 10px 20px;
+  transition: 0.2s;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+.quiz-btn:hover {
+  color: #fff;
+  transform: translate(-0.25rem, -0.25rem);
+  background: #BFD8AF;
+  box-shadow: 0.25rem 0.25rem #99BC85;
+}
+.quiz-btn:active {
+  transform: translate(0);
+  box-shadow: none;
+} */
+
+.quiz-btn {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 19px;
+  border: 2px solid #e5e5e5;
+  box-shadow: 0 5px 0 #e5e5e5;
+}
+.quiz-btn:hover {
+  background-color: #ddf4ff;
+  box-shadow: 0 5px 0 #1cb0f6;
+  border-color: #1cb0f6;
+}
+.quiz-btn:active {
+  box-shadow: none;
+  border: 2px solid #1cb0f6;
+  border-color: #1cb0f6;
+}
+
+.quiz-btn:focus {
+  box-shadow: none;
+  transform: translateY(5px);
+  background-color: #ddf4ff;
+  border-color: #1cb0f6;
+}

@@ -29,12 +29,10 @@
     <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
     <!-- Google Fonts -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Nunito -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Urbanist:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <!-- jQuery -->
@@ -90,7 +88,7 @@
           <!-- <h1><a href="index.html">QuizMindset</a></h1> -->
           <a href="#" class="d-flex align-items-center">
             <img src="assets/img/0cecd302cf0bcd0f73d51768feff75fe.svg" alt="" />
-            <span style="font-weight: 800; font-size: 33px;">CodeQuiz</span>
+            <span style="font-weight: 800; font-size: 33px">CodeQuiz</span>
           </a>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
@@ -106,7 +104,11 @@
             <!-- <li><a class="nav-link scrollto" href="#!/services">Dịch vụ</a></li> -->
             <li><a class="nav-link scrollto" href="#!faq">Hỏi đáp</a></li>
             <li><a class="nav-link scrollto" href="#!contact">Liên hệ</a></li>
-            <li ng-if="isLoggedIn"><a href="" class="nav-link" style="color: #58cc02;">Xin chào {{getStudent.username}}!</a></li>
+            <li ng-if="isLoggedIn">
+              <a href="" class="nav-link" style="color: #58cc02"
+                >Xin chào {{getStudent.username}} ✌!</a
+              >
+            </li>
             <li class="dropdown">
               <a href="#!account" class="nav-link"
                 ><span>Tài khoản</span>
@@ -141,7 +143,7 @@
       <div class="footer-top">
         <div class="container">
           <div class="row">
-            <div class="col-lg-3 col-md-6 footer-contact">
+            <div class="col-lg-5 col-md-6 footer-contact">
               <h3 style="font-size: 34px; font-weight: 900; color: #58cc02">CodeQuiz</h3>
               <p>
                 Dĩ An, Bình Dương <br />
@@ -150,8 +152,7 @@
                 <strong>Email:</strong> hoangaatrox23504@gmail.com<br />
               </p>
             </div>
-
-            <div class="col-lg-2 col-md-6 footer-links">
+            <div class="col-lg-4 col-md-6 footer-links">
               <h4>Liên kết hữu ích</h4>
               <ul>
                 <li><i class="bx bx-chevron-right"></i> <a href="#!/home">Trang chủ</a></li>
@@ -167,7 +168,6 @@
                 </li>
               </ul>
             </div>
-
             <div class="col-lg-3 col-md-6 footer-links">
               <h4>Dịch vụ khác</h4>
               <ul>
@@ -188,7 +188,7 @@
               </ul>
             </div>
 
-            <div class="col-lg-4 col-md-6 footer-newsletter">
+            <!-- <div class="col-lg-4 col-md-6 footer-newsletter">
               <h4>Cập nhật tin tức cùng chúng tôi</h4>
               <p>Tin tức về ngành công nghệ thông tin mới nhất.</p>
               <form action="">
@@ -198,7 +198,7 @@
                   style="font-weight: 700"
                 />
               </form>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
