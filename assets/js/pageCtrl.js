@@ -61,7 +61,7 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
     if (user) {
       // Hiển thị SweetAlert với thông báo password
       Swal.fire({
-        imageUrl: "https://design.duolingo.com/61ed15447ba714a5e160.svg",
+        imageUrl: "https://design.duolingo.com/6b59833e80abfee5a4e0.svg",
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: "Custom image",
@@ -454,7 +454,7 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
           getQuestion();
         }
       });
-    }, 1000);
+    }, 700);
     console.log("localdata");
     console.log(localData);
   };
@@ -514,14 +514,14 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
     console.log($scope.historyQuestionWrong);
     $scope.currentQuestionWrong = $scope.historyQuestionWrong.length - 1;
     $scope.historyAnyQuestion = localdata.filter((item) => item.questionId);
-    $scope.timePerSec = Math.floor($scope.time / 10);
-    $scope.percent =
-      (($scope.listQuestions.length -
-        ($scope.listQuestions.length - $scope.listOfRightAnswer.length)) /
-        $scope.listQuestions.length) *
-        100 +
-      "%";
-    console.log($scope.percent);
+    // $scope.timePerSec = Math.floor($scope.time / 10);
+    // $scope.percent =
+    //   (($scope.listQuestions.length -
+    //     ($scope.listQuestions.length - $scope.listOfRightAnswer.length)) /
+    //     $scope.listQuestions.length) *
+    //     100 +
+    //   "%";
+    // console.log($scope.percent);
   };
   $scope.again = () => {
     localStorage.removeItem($scope.idMH);

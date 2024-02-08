@@ -7,13 +7,13 @@
         class="col-md-3 d-flex align-items-stretch mt-4"
         ng-repeat="sub in list_subject|limitTo:pageSize:start"
       >
-        <div class="card text-center py-4">
-          <div class="card-header" style="font-weight: 500; min-height: 80px; font-size: 21px;">{{sub.Name}}</div>
-          <div class="card-body mb-5"><img src="/assets/img/logos/{{sub.Logo}}" alt="" /></div>
+        <div class="card text-center py-4" style="box-shadow: 0 5px 0 #e5e5e5; border: 3px solid #e5e5e5;">
+          <div class="card-header" style="font-weight: 500; min-height: 80px; font-size: 20px;">{{sub.Name}}</div>
+          <div class="card-body mb-2"><img src="/assets/img/logos/{{sub.Logo}}" alt="" /></div>
           <div class="card-footer">
             <a
               href="#!/quiz/{{sub.Id}}/{{sub.Name}}"
-              class="btn btn-primary text-light py-3 fw-medium"
+              class="btn btn-primary text-light fw-medium"
               style="background-color: #58c002; text-transform: none"
               >BẮT ĐẦU LÀM <i class="bi bi-arrow-up-right"></i
             ></a>
@@ -26,7 +26,7 @@
       <button
         class="btn btn-primary1 fw-medium text-light"
         ng-click="prev()"
-        style="background-color: #1cb0f6"
+        style="background-color: #1cb0f6; margin-right: 10px"
         ng-show="start != 0"
       >
         <i class="bi bi-arrow-bar-left"></i> Trang trước
@@ -34,7 +34,7 @@
       <button
         class="btn btn-primary1 fw-medium text-light"
         ng-click="next()"
-        style="background-color: #1cb0f6"
+        style="background-color: #1cb0f6; margin-right: 10px"
         ng-show="start + pageSize < list_subject.length"
       >
         Trang tiếp <i class="bi bi-arrow-bar-right"></i>
