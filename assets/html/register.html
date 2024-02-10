@@ -2,8 +2,8 @@
   <br /><br /><br />
   <div class="row justify-content-center">
     <div
-     class="col-lg-4 col-md-6 col-sm-8 col-12 py-5 rounded-4"
-      style="background-color: #E1F0DA; box-shadow: 0 7px 0 #BFD8AF; border: 3px solid #BFD8AF;"
+      class="col-lg-4 col-md-6 col-sm-8 col-12 py-5 rounded-4"
+      style="background-color: #e1f0da; box-shadow: 0 7px 0 #bfd8af; border: 3px solid #bfd8af"
     >
       <h1 style="font-weight: 700; color: #58cc02" class="text-center py-1 mb-5">Đăng ký</h1>
       <div class="col">
@@ -51,9 +51,7 @@
               ng-model="email"
               required
             />
-            <i class="alert1" ng-show="formSignup.email.$invalid"
-              >Email phải bao gồm @gmail.com</i
-            >
+            <i class="alert1" ng-show="formSignup.email.$invalid">Email phải bao gồm @gmail.com</i>
           </div>
           <div class="mb-3">
             <label for="inputPassword5" class="form-label">Mật khẩu</label>
@@ -112,14 +110,28 @@
             ng-model="birthday"
             required
           />
-          <i class="alert1" ng-show="formSignup.date.$invalid"
-              >Vui lòng chọn ngày sinh</i
-            >
-          <div class="mb-3 form-check"></div>
+          <i class="alert1" ng-show="formSignup.date.$invalid">Vui lòng chọn ngày sinh</i>
+          <div class="mb-3 mt-3">
+            <label for="schoolFee" class="form-label">Học phí</label>
+            <input
+              type="test"
+              id="schoolFee"
+              name="schoolFee"
+              class="form-control formCtrl mb-2"
+              ng-model="schoolfee"
+              required
+            />
+            <i class="alert1" ng-show="formSignup.schoolFee.$invalid">Vui lòng nhập học phí</i>
+          </div>
+          <div class="mb-3">
+            <label for="marks" class="form-label">Điểm</label>
+            <input type="text" id="marks" name="mark" class="form-control formCtrl mb-2" ng-model="marks"  required/>
+            <i class="alert1" ng-show="formSignup.mark.$invalid">Vui lòng nhập điểm</i>
+          </div>
           <div class="text-center">
             <button
               type="submit"
-              class="btn btn-primary fw-medium px-5 fs-5"
+              class="btn btn-primary fw-medium px-5 fs-5 mt-3"
               style="background-color: #58cc02"
               ng-click="postdata()"
             >

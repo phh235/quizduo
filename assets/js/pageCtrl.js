@@ -91,6 +91,7 @@ myApp.controller("changePasswordCtrl", function ($scope, $http) {
       title: "Bạn cần phải đăng nhập!!!",
       icon: "error",
       confirmButtonText: "OK",
+      confirmButtonColor: "#3085d6",
     }).then((result) => {
       if (result.isConfirmed) {
         // Nếu người dùng ấn "OK", chuyển trang
@@ -219,6 +220,7 @@ myApp.config(function ($routeProvider) {
     })
     .when("/signUp", {
       templateUrl: "assets/html/register.html",
+      controller: "registerCtrl",
     })
     .when("/forgot", {
       templateUrl: "assets/html/forgot.html",
@@ -231,7 +233,7 @@ myApp.config(function ($routeProvider) {
     });
 });
 
-myApp.controller("registerCtrl", function ($scope, $http) {
+myApp.controller("registerCtrl", function ($scope, $http, $location) {
   $scope.postdata = function (data) {
     var data = {
       username: $scope.username,
@@ -240,8 +242,8 @@ myApp.controller("registerCtrl", function ($scope, $http) {
       email: $scope.email,
       gender: $scope.gender,
       birthday: $scope.birthday,
-      schoolfee: "0",
-      marks: "0",
+      schoolfee: $scope.schoolfee,
+      marks: $scope.marks,
       id: Math.random(),
     };
     $http.post("http://localhost:3000/listStudent", data).then(
@@ -250,9 +252,13 @@ myApp.controller("registerCtrl", function ($scope, $http) {
           title: "Đăng ký thành công",
           icon: "success",
           confirmButtonColor: "#3085d6",
-        }).then(function () {
-          // Chuyển hướng sau khi người dùng ấn OK
-          window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
+          confirmButtonText: "OK",
+        }).then((result) => {
+          // Nếu người dùng ấn OK
+          if (result.isConfirmed) {
+            // Thực hiện chuyển hướng hoặc hành động khác tại đây
+            window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
+          }
         });
       },
       function (error) {
@@ -270,8 +276,9 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
   if (sessionStorage.getItem("username") === null) {
     Swal.fire({
       title: "Bạn cần phải đăng nhập!!!",
-      icon: "error",
+      icon: "warning",
       confirmButtonText: "OK",
+      confirmButtonColor: "#3085d6",
     }).then((result) => {
       if (result.isConfirmed) {
         // Nếu người dùng ấn "OK", chuyển trang
