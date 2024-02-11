@@ -419,7 +419,7 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
           $scope.listOfRightAnswer.splice(index, 1);
         }
       });
-      console.log("kq dung: " + $scope.listOfRightAnswer);
+      console.log("Kết quả đúng: " + $scope.listOfRightAnswer);
     }
     var yourAnswer = $scope.handleAnswer(select, $scope.rightAnswer);
     const localData = JSON.parse(localStorage.getItem($scope.idMH));
@@ -462,7 +462,7 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
         }
       });
     }, 700);
-    console.log("localdata");
+    // console.log("localdata");
     console.log(localData);
   };
   $scope.handleAnswer = (answer, rightAnswer) => {
@@ -476,6 +476,7 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
     const myJSON = JSON.stringify(Obj);
     localStorage.setItem(key, myJSON);
   };
+  $scope.countPoint = 0;
   $scope.handIn = () => {
     Swal.fire({
       title: "Nộp bài thành công!",
@@ -492,6 +493,7 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
       var totalQuestions = $scope.listQuestions.length;
       var totalRightQuestions = $scope.listOfRightAnswer.length;
       $scope.totalPoint = (totalRightQuestions * 10) / totalQuestions;
+      $scope.countPoint = totalRightQuestions; // Gán số câu đúng vào biến countPoint
       $scope.handed = true;
       $interval.cancel($scope.intervalTime);
       var localdata = JSON.parse(localStorage.getItem($scope.idMH));

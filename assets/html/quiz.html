@@ -146,7 +146,7 @@
                       {{renderTime }} <i class="bi bi-stopwatch-fill"></i></p>
               </div> -->
       <div
-        class="col-5 rounded-4 d-flex justify-content-center"
+        class="col-5 rounded-4 text-center"
         style="
           height: 120px;
           background-color: #d4e7c5;
@@ -154,7 +154,8 @@
           border: 3px solid #bfd8af;
         "
       >
-        <label for="" class="mt-2 h5 text-black" data-wow-delay="0.3s">Câu đúng </label>
+        <label for="" class="mt-2 h5 text-black" data-wow-delay="0.3s">Câu đúng </label> <br>
+        <label for="" class="mt-2 h5 text-black"><span class="fs-1" ng-class="{'text-success': countPoint > 5, 'text-danger': countPoint <= 5}">{{countPoint}}</span></label>
       </div>
       <div
         class="col-5 rounded-4 text-center"
@@ -166,7 +167,7 @@
         "
       >
         <label for="" class="mt-2 h5 text-black">Điểm số:</label><br />
-        <label for="" class="mt-2 h5 text-black"><span class="text-danger fs-1">{{totalPoint}}</span></label>
+        <label for="" class="mt-2 h5 text-black"><span class="fs-1" ng-class="{'text-success': totalPoint > 5, 'text-danger': totalPoint <= 5}">{{totalPoint}}</span></label>
       </div>
     </div>
     <div class="">
