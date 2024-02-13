@@ -1,6 +1,16 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+/* FONT */
+@font-face {
+    font-family: "Feather Bold";
+    src: url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.eot");
+    src: url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.svg#Feather Bold")format("svg");
+}
 /* CURSOR ANIMATION */
 /* .cursor-dot {
   width: 15px;
@@ -184,7 +194,7 @@ h6 {
   margin: 0;
   line-height: 0;
   font-weight: 900;
-  font-family: "Lexend Deca", sans-serif;
+  /* font-family: "Lexend Deca", sans-serif; */
 }
 
 #header .logo h1 a,
@@ -476,7 +486,7 @@ h6 {
 #hero h1 {
   margin: 0 0 10px 0;
   font-size: 55px;
-  font-family: "Lexend Deca";
+  /* font-family: "Lexend Deca"; */
   font-weight: 700;
   line-height: 56px;
   color: #fff;
@@ -500,7 +510,7 @@ h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Lexend Deca", sans-serif;
+  font-family: "Feather Bold", sans-serif;
   font-weight: 400;
   font-size: 16px;
   letter-spacing: 1px;
@@ -1451,7 +1461,7 @@ section {
 .counts .count-box p {
   padding: 0;
   margin: 0;
-  font-family: "Lexend Deca", sans-serif;
+  font-family: "Feather Bold", sans-serif;
   font-size: 15px;
   font-weight: 700;
 }
@@ -1513,7 +1523,7 @@ section {
 }
 
 .formCtrl {
-  width: 415px;
+  /* width: 415px; */
   border: 2px solid #e5e5e5;
   border-radius: 12px;
 }
