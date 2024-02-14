@@ -27,12 +27,12 @@
             ng-model="username"
           /> -->
           <div class="mb-3">
-            <label for="inputPassword6" class="form-label">Nhập mật khẩu cũ</label>
+            <label for="inputPassword6" class="form-label fw-bold">Nhập mật khẩu cũ</label>
           <input
             type="password"
             id="oldPassword"
             name="oldPassword"
-            class="form-control formCtrl mb-2"
+            class="form-control formCtrl mb-2 fw-bold"
             aria-describedby="passwordHelpBlock"
             ng-model="currentPassword"
             required
@@ -40,12 +40,12 @@
           <i class="alert1" ng-show="formChangePassword.oldPassword.$invalid">Vui lòng nhập mật khẩu cũ</i>
           </div>
           <div class="mb-3">
-            <label for="inputPassword7" class="form-label">Nhập mật khẩu mới</label>
+            <label for="inputPassword7" class="form-label fw-bold">Nhập mật khẩu mới</label>
           <input
             type="password"
             id="newPassword"
             name="newPassword"
-            class="form-control formCtrl mb-2"
+            class="form-control formCtrl mb-2 fw-bold"
             aria-describedby="passwordHelpBlock"
             ng-model="newPassword"
             required
@@ -53,12 +53,12 @@
           <i class="alert1" ng-show="formChangePassword.newPassword.$invalid">Vui lòng nhập mật khẩu mới</i>
           </div>
           <div class="mb-3">
-            <label for="inputPassword8" class="form-label">Xác nhận mật khẩu mới</label>
+            <label for="inputPassword8" class="form-label fw-bold">Xác nhận mật khẩu mới</label>
           <input
             type="password"
             id="confirmPassword"
             name="confirmPassword"
-            class="form-control formCtrl mb-2"
+            class="form-control formCtrl mb-2 fw-bold"
             aria-describedby="passwordHelpBlock"
             ng-model="confirmPassword"
             required
@@ -69,7 +69,7 @@
           <div class="text-center">
             <button
               type="button"
-              class="btn btn-primary fw-medium px-5 fs-5"
+              class="btn btn-primary fw-bold px-5 fs-5"
               style="background-color: #58cc02"
               ng-click="changePassword()"
             >

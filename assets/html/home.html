@@ -1,20 +1,23 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
   <div class="container" data-aos="fade-down">
-    <h1 style="font-family: Feather Bold;">Chào mừng bạn tới <span style="color: #58cc02; font-weight: 800; font-family: Feather Bold; font-size: 70px;">quizduo</span></h1>
-    <h2 style="font-weight: 550">
+    <h1>
+      Chào mừng bạn tới
+      <span style="color: #58cc02; font-weight: 800; font-size: 60px; font-family: Feather Bold"
+        >quizduo</span
+      >
+    </h1>
+    <h2 style="font-weight: 550; font-family: Quicksand">
       Website của chúng tôi đem đến cho bạn những bài học bổ ích về lập trình.
     </h2>
     <div class="d-flex align-items-center">
-      <i class="bx bxs-right-arrow-alt get-started-icon"></i>
       <a
         href="#!about"
-        class="btn-get-started scrollto"
-        style="font-weight: 500"
+        class="btn btn-primary px-5"
+        style="font-weight: 700; background-color: #58c002"
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop"
-        >Xem thêm</a
-      >
+        >Xem thêm</a>
     </div>
   </div>
 </section>
@@ -32,7 +35,12 @@
   <div class="modal-dialog modal-dialog-centered modal-fullscreen">
     <div class="modal-content bg-dark">
       <div class="modal-header">
-        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close bg-light"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body p-0">
         <iframe
@@ -77,7 +85,7 @@
               >
                 <div class="icon-box mt-4 mt-xl-0">
                   <i class="bx bx-receipt"></i>
-                  <h4 style="font-family: Feather Bold;">Đa đạng môn học</h4>
+                  <h4 class="fs-5 fw-bold">Đa đạng môn học</h4>
                   <p>
                     Khám phá các khía cạnh đa dạng của lập trình, từ những ngôn ngữ cơ bản đến kỹ
                     năng chuyên sâu, mang đến nền tảng vững chắc và đa năng.
@@ -91,7 +99,7 @@
               >
                 <div class="icon-box mt-4 mt-xl-0">
                   <i class="bx bx-cube-alt"></i>
-                  <h4 style="font-family: Feather Bold;">Đa nền tảng</h4>
+                  <h4 class="fs-5 fw-bold">Đa nền tảng</h4>
                   <p>
                     Học cách phát triển ứng dụng trên nhiều nền tảng khác nhau như di động, web và
                     máy tính để tạo ra sản phẩm linh hoạt và tiếp cận rộng rãi.
@@ -105,7 +113,7 @@
               >
                 <div class="icon-box mt-4 mt-xl-0">
                   <i class="bx bx-images"></i>
-                  <h4 style="font-family: Feather Bold;">Hình ảnh chất lượng</h4>
+                  <h4 class="fs-5 fw-bold">Hình ảnh chất lượng</h4>
                   <p>
                     Tạo ra trải nghiệm tốt nhất cho người dùng bằng cách thiết kế giao diện hấp dẫn
                     và đồ họa ứng dụng sáng tạo và chất lượng cao.
@@ -191,49 +199,59 @@
     </div>
   </section>
   <!-- End Counts Section -->
-<section id="values" class="values" data-aos="fade-up">
-  <div class="container" ng-controller="subjectCtrl">
-    <h1 style="font-weight: 800; color: #58cc02;" class="text-center">Môn học</h1>
+  <section id="values" class="values" style="margin-top: 20px">
+  <div class="container">
+    <h1 data-aos="fade-up" style="font-weight: 800; color: #58cc02" class="text-center mb-5">
+      Môn học
+    </h1>
 
-    <div class="row">
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
       <div
         class="col-md-3 d-flex align-items-stretch mt-4"
         ng-repeat="sub in list_subject|limitTo:pageSize:start"
       >
-        <div class="card text-center py-4" style="box-shadow: 0 5px 0 #e5e5e5; border: 3px solid #e5e5e5;">
-          <div class="card-header" style="font-weight: 500; min-height: 80px; font-size: 20px;">{{sub.Name}}</div>
-          <div class="card-body mb-5"><img src="/assets/img/logos/{{sub.Logo}}" alt="" /></div>
+        <div
+          class="card text-center py-4 mb-5"
+          style="box-shadow: 0 5px 0 #e5e5e5; border: 3px solid #e5e5e5"
+        >
+          <div class="card-header" style="min-height: 80px; font-size: 20px">
+            {{sub.Name}}
+          </div>
+          <div class="card-body mb-2"><img ng-src="/assets/img/logos/{{sub.Logo}}" alt="" /></div>
           <div class="card-footer">
             <a
               href="#!/quiz/{{sub.Id}}/{{sub.Name}}"
-              class="btn btn-primary text-light py-3 fw-medium"
-              style="background-color: #58c002; text-transform: none"
-              >BẮT ĐẦU LÀM <i class="bi bi-arrow-up-right"></i
-            ></a>
+              class="btn btn-primary text-light px-5"
+              style="background-color: #58c002; text-transform: none; font-weight: 700;"
+              >BẮT ĐẦU LÀM </a>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="100">
+    <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="200">
       <button
-        class="btn btn-primary1 fw-medium text-light"
+        class="btn btn-primary1 text-light px-4"
         ng-click="prev()"
-        style="background-color: #1cb0f6; margin-right: 10px"
+        style="background-color: #1cb0f6; margin-right: 10px; font-weight: 700;"
         ng-show="start != 0"
       >
-        <i class="bi bi-arrow-bar-left"></i> Trang trước
+        <i class="bx bxs-left-arrow"></i>
+        Trang trước
       </button>
       <button
-        class="btn btn-primary1 fw-medium text-light"
+        class="btn btn-primary1 text-light px-4"
         ng-click="next()"
-        style="background-color: #1cb0f6; margin-right: 10px"
+        style="background-color: #1cb0f6; margin-right: 10px; font-weight: 700;"
         ng-show="start + pageSize < list_subject.length"
       >
-        Trang tiếp <i class="bi bi-arrow-bar-right"></i>
+        Trang tiếp
+        <i class="bx bxs-right-arrow"></i>
       </button>
     </div>
   </div>
+  <div class="p-5 mb-5"></div>
 </section>
 <!-- End Values Section -->
+
 </main>

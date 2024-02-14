@@ -1,5 +1,24 @@
 var myApp = angular.module("myApp", ["ngRoute"]);
 myApp.controller("myCtrl", function ($scope, $http, $rootScope, $location) {
+  $scope.list_subject = [];
+  $http.get("db/Subjects.js").then(function (reponse) {
+    $scope.list_subject = reponse.data;
+    console.log($scope.list_subject);
+  });
+  $scope.start = 0;
+  $scope.pageSize = 4;
+
+  $scope.prev = function () {
+    if ($scope.start > 0) {
+      $scope.start -= $scope.pageSize;
+    }
+  };
+  $scope.next = function () {
+    if ($scope.start < $scope.list_subject.length - $scope.pageSize) {
+      $scope.start += $scope.pageSize;
+    }
+  };
+
   $http
     .get(`http://localhost:3000/listStudent`)
     .then(function (response) {
@@ -61,12 +80,12 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
     if (user) {
       // Hiển thị SweetAlert với thông báo password
       Swal.fire({
+        title: "Mật khẩu của bạn là:",
+        text: user.password,
         imageUrl: "https://design.duolingo.com/6b59833e80abfee5a4e0.svg",
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: "Custom image",
-        title: "Mật khẩu của bạn là:",
-        text: user.password,
         icon: "info",
         confirmButtonText: "OK",
         confirmButtonColor: "#3085d6",
@@ -99,16 +118,17 @@ myApp.controller("changePasswordCtrl", function ($scope, $http) {
       }
     });
   }
-  $scope.email = "userLoggedInEmail";
 
   $scope.changePassword = function () {
     // Check if passwords match
     if ($scope.newPassword !== $scope.confirmPassword) {
-      // Handle password mismatch
-      console.log("Passwords do not match");
+      Swal.fire({
+        title: "Mật khẩu không khớp",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
       return;
     }
-
     // Find the user with the provided email
     const user = $scope.listStudent.find((s) => s.email === $scope.getStudent.email);
 
@@ -122,66 +142,24 @@ myApp.controller("changePasswordCtrl", function ($scope, $http) {
 
       // Assume that the JSON Server endpoint for changing passwords is different
       // Adjust the endpoint according to your JSON Server setup
-      $http
-        .patch(`http://localhost:3000/listStudent/` + data.id, data)
-        .then(function (response) {
-          // Handle success response
-          Swal.fire({
-            title: "Đổi mật khẩu thành công",
-            icon: "success",
-            confirmButtonText: "OK",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              // Nếu người dùng ấn "OK", chuyển trang
-              window.location.href = "http://127.0.0.1:5502/index.html#!/home";
-            }
-          });
-        })
-        .catch(function (error) {
-          // Handle error response
-          console.error("Error changing password", error);
+      $http.patch(`http://localhost:3000/listStudent/` + data.id, data).then(function (response) {
+        // Handle success response
+        Swal.fire({
+          title: "Đổi mật khẩu thành công",
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Nếu người dùng ấn "OK", chuyển trang
+            window.location.href = "http://127.0.0.1:5502/index.html#!/home";
+          }
         });
-    } else {
-      // Handle case where email is not found in listStudent
-      console.log("Email not found in listStudent");
+      });
     }
   };
 });
 
-myApp.controller("subjectCtrl", function ($scope, $http) {
-  $scope.list_subject = [];
-  $http.get("db/Subjects.js").then(function (reponse) {
-    $scope.list_subject = reponse.data;
-    console.log($scope.list_subject);
-  });
-
-  // $scope.begin = 0;
-  // $scope.pageCount = Math.ceil($scope.list_subject.length / 4);
-
-  // $scope.prev = function () {
-  //   if ($scope.begin > 0) {
-  //     $scope.begin -= 4;
-  //   }
-  // };
-  // $scope.next = function () {
-  //   if ($scope.begin > ($scope.pageCount - 1) * 4) {
-  //     $scope.begin += 4;
-  //   }
-  // };
-  $scope.start = 0;
-  $scope.pageSize = 4;
-
-  $scope.prev = function () {
-    if ($scope.start > 0) {
-      $scope.start -= $scope.pageSize;
-    }
-  };
-  $scope.next = function () {
-    if ($scope.start < $scope.list_subject.length - $scope.pageSize) {
-      $scope.start += $scope.pageSize;
-    }
-  };
-});
+myApp.controller("subjectCtrl", function ($scope, $http) {});
 
 myApp.config(function ($routeProvider) {
   $routeProvider
@@ -190,7 +168,7 @@ myApp.config(function ($routeProvider) {
     })
     .when("/subject", {
       templateUrl: "assets/html/subject.html",
-      controller: "subjectCtrl",
+      // controller: "subjectCtrl",
     })
     .when("/quiz/:idMH/:tenMH", {
       templateUrl: "assets/html/quiz.html",
@@ -621,15 +599,31 @@ myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: "Custom image",
-        text: `Chào mừng bạn ${$scope.currentUser}`,
         icon: "success",
-        confirmButtonColor: "#3085d6",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // Nếu người dùng ấn "OK", chuyển trang
-          window.location.href = "http://127.0.0.1:5502/index.html#!/home";
-        }
+        // confirmButtonColor: "#3085d6",
+        showConfirmButton: false,
+        html: `
+    <div class="custom-html">
+      Chuyển trang sau <b class="second"></b> giây.
+    </div>
+  `,
+        timer: 3000,
+        timerProgressBar: false,
+        didOpen: () => {
+          const timer = Swal.getPopup().querySelector("b");
+          timerInterval = setInterval(() => {
+            const remainingTime = Math.ceil(Swal.getTimerLeft() / 1000); // Chuyển đổi mili giây sang giây và làm tròn lên
+            timer.textContent = remainingTime;
+          }, 1000); // Cập nhật giá trị mỗi giây
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+        },
       });
+      // Chờ 1 giây trước khi chuyển trang
+      setTimeout(function () {
+        window.location.href = "http://127.0.0.1:5502/index.html#!home";
+      }, 3000);
     } else {
       Swal.fire({
         title: "Tên đăng nhập hoặc mật khẩu không đúng!",
@@ -638,34 +632,4 @@ myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
     }
     $scope.checkLoginStatus();
   };
-});
-
-// nav menu
-document.addEventListener("DOMContentLoaded", function () {
-  var navLinks = document.querySelectorAll(".nav-link");
-
-  navLinks.forEach(function (link) {
-    link.addEventListener("click", function () {
-      // Đặt màu cho tất cả nav-link về màu mặc định
-      navLinks.forEach(function (otherLink) {
-        otherLink.style.color = "#000"; // Đặt màu theo mong muốn
-      });
-
-      // Đặt màu cho nav-link được kích hoạt
-      link.style.color = "#58cc02"; // Đặt màu mới khi nav-link được kích hoạt
-    });
-  });
-});
-
-myApp.run(function ($rootScope) {
-  $rootScope.$on("$routeChangeStart", function () {
-    $rootScope.loading = true;
-  });
-  $rootScope.$on("$routeChangeSuccess", function () {
-    $rootScope.loading = false;
-  });
-  $rootScope.$on("$routeChangeError", function () {
-    $rootScope.loading = false;
-    alert("Lỗi");
-  });
 });
