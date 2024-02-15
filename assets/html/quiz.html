@@ -4,8 +4,7 @@
     class="card"
     ng-if="handed == false"
     style="
-      box-shadow: 0 5px 0 #e5e5e5;
-      border: 2px solid #e5e5e5;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
       padding: 10px;
       min-width: 1280px;
       border-radius: 20px;
@@ -129,7 +128,7 @@
     ng-if="handed === true"
     style="box-shadow: 0 5px 0 #e5e5e5; border: 3px solid #e5e5e5; border-radius: 15px"
   >
-    <p class="h3 wow fadeInUp d-flex justify-content-center mt-4 mb-4 h3" data-wow-delay="0.3s">
+    <p class="h3 wow fadeInUp d-flex justify-content-center mt-4 mb-4 h3 fw-bold" data-wow-delay="0.3s">
       Bạn đã làm xong bộ câu hỏi này
     </p>
     <div class="row g-4 d-flex justify-content-between mb-3 p-5">
@@ -154,8 +153,8 @@
           border: 3px solid #bfd8af;
         "
       >
-        <label for="" class="mt-2 h5 text-black" data-wow-delay="0.3s">Câu đúng </label> <br>
-        <label for="" class="mt-2 h5 text-black"><span class="fs-1" ng-class="{'text-success': countPoint > 5, 'text-danger': countPoint <= 5}">{{countPoint}}</span></label>
+        <label for="" class="mt-2 h5 text-black fw-bold" data-wow-delay="0.3s">Câu đúng </label> <br>
+        <label for="" class="mt-2 h5 text-black fw-bold"><span class="fs-1" ng-class="{'text-success': countPoint > 5, 'text-danger': countPoint <= 5}">{{countPoint}}</span></label>
       </div>
       <div
         class="col-5 rounded-4 text-center"
@@ -166,21 +165,21 @@
           border: 3px solid #bfd8af;
         "
       >
-        <label for="" class="mt-2 h5 text-black">Điểm số:</label><br />
-        <label for="" class="mt-2 h5 text-black"><span class="fs-1" ng-class="{'text-success': totalPoint > 5, 'text-danger': totalPoint <= 5}">{{totalPoint}}</span></label>
+        <label for="" class="mt-2 h5 text-black fw-bold">Điểm số:</label><br />
+        <label for="" class="mt-2 h5 text-black fw-bold"><span class="fs-1" ng-class="{'text-success': totalPoint > 5, 'text-danger': totalPoint <= 5}">{{totalPoint}}</span></label>
       </div>
     </div>
     <div class="">
       <div class="d-flex justify-content-center mt-5 mb-1">
         <button
-          class="btn btn-primary fw-medium"
+          class="btn btn-primary fw-bold"
           ng-click="again()"
           style="background-color: #58c002"
         >
           Làm lại <i class="bi bi-arrow-clockwise"></i>
         </button>
         <button
-          class="btn btn-primary ms-3 me-3 fw-medium"
+          class="btn btn-primary ms-3 me-3 fw-bold"
           ng-click="showAnswer()"
           style="background-color: #58c002"
         >
@@ -191,19 +190,19 @@
       <div ng-if="show === true" ng-repeat="questions in historyQuestion.answers">
         <div class="pt-3">
           <div class="h-100 p-4 border rounded-3 s-color">
-            <h4 class="mb-3">{{questions.Text}}</h4>
-            <p ng-repeat="single in questions.Answers" ng-if="single.Id === questions.AnswerId">
+            <h4 class="mb-3 fw-bold">{{questions.Text}}</h4>
+            <p ng-repeat="single in questions.Answers" ng-if="single.Id === questions.AnswerId" class="fw-bold">
               Đáp án đúng: <span class="fw-bold">{{single.Text}}</span>
             </p>
             <p
-              class="text-success"
+              class="text-success fw-medium"
               ng-repeat="single in historyQuestionRight"
               ng-if="single.answers === questions.AnswerId"
             >
               <i class="bi bi-check-square"></i> Bạn chọn đúng
             </p>
             <p
-              class="text-danger"
+              class="text-danger fw-medium"
               ng-repeat="single in historyQuestionWrong"
               ng-if="single.questionId === questions.Id"
             >

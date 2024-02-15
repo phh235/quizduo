@@ -11,18 +11,19 @@
       >
         <div
           class="card text-center py-4 mb-5"
-          style="box-shadow: 0 5px 0 #e5e5e5; border: 3px solid #e5e5e5"
+          style="box-shadow: 0 5px 0 #e5e5e5; border: 2px solid #e5e5e5"
         >
-          <div class="card-header" style="min-height: 80px; font-size: 20px">
-            {{sub.Name}}
+          <div class="card-header" style="min-height: 80px; font-size: 20px">{{sub.Name}}</div>
+          <div class="card-body mb-2">
+            <img src="/assets/img/logos/{{sub.Logo}}" alt="" loading="lazy" />
           </div>
-          <div class="card-body mb-2"><img ng-src="/assets/img/logos/{{sub.Logo}}" alt="" /></div>
           <div class="card-footer">
             <a
               href="#!/quiz/{{sub.Id}}/{{sub.Name}}"
               class="btn btn-primary text-light px-5"
-              style="background-color: #58c002; text-transform: none; font-weight: 700;"
-              >BẮT ĐẦU LÀM </a>
+              style="background-color: #58c002; text-transform: none; font-weight: 700"
+              >BẮT ĐẦU LÀM
+            </a>
           </div>
         </div>
       </div>
@@ -32,7 +33,7 @@
       <button
         class="btn btn-primary1 text-light px-4"
         ng-click="prev()"
-        style="background-color: #1cb0f6; margin-right: 10px; font-weight: 700;"
+        style="background-color: #1cb0f6; margin-right: 10px; font-weight: 700"
         ng-show="start != 0"
       >
         <i class="bx bxs-left-arrow"></i>
@@ -41,7 +42,7 @@
       <button
         class="btn btn-primary1 text-light px-4"
         ng-click="next()"
-        style="background-color: #1cb0f6; margin-right: 10px; font-weight: 700;"
+        style="background-color: #1cb0f6; margin-right: 10px; font-weight: 700"
         ng-show="start + pageSize < list_subject.length"
       >
         Trang tiếp

@@ -194,8 +194,7 @@ h6 {
   height: 70px;
   transition: all 0.5s;
   z-index: 997;
-  background-color: #fff;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
 }
 
 #header.header-fixed {
@@ -219,7 +218,8 @@ h6 {
 #header .logo img {
   padding: 0;
   margin: 0;
-  max-height: 40px;
+  max-height: 50px;
+  line-height: 70px;
 }
 
 .scrolled-offset {
@@ -921,6 +921,7 @@ section {
   border-radius: 15px;
   font-family: "Quicksand";
   font-weight: bold;
+  
 }
 
 .values .card-body {
@@ -943,11 +944,11 @@ section {
 }
 
 .card-header {
-  background-color: #fff;
+  background-color: transparent;
   border: none;
 }
 .card-footer {
-  background-color: #fff;
+  background-color: transparent;
   border: none;
   font-size: 18px;
 }

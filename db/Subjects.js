@@ -22,7 +22,7 @@
     {
         "Id": "ASNE",
         "Name": "Lập trình ASP.NET",
-        "Logo": "ASNE.png"
+        "Logo": "ASNE.jpg"
     },
     {
         "Id": "CLCO",
@@ -32,17 +32,17 @@
     {
         "Id": "DBAV",
         "Name": "SQL Server",
-        "Logo": "DBAV.png"
+        "Logo": "DBAV.jpg"
     },
     {
         "Id": "DBBS",
         "Name": "Cơ sở dữ liệu",
-        "Logo": "DBBS.png"
+        "Logo": "DBBS.jpg"
     },
     {
         "Id": "GAME",
         "Name": "Lập trình game 2D",
-        "Logo": "GAME.png"
+        "Logo": "GAME.jpg"
     },
     {
         "Id": "HTCS",
@@ -57,17 +57,17 @@
     {
         "Id": "JAAV",
         "Name": "Lập trình Java nâng cao",
-        "Logo": "JAAV.png"
+        "Logo": "JAAV.jpg"
     },
     {
         "Id": "JABS",
         "Name": "Lập trình hướng đối tượng với Java",
-        "Logo": "JABS.png"
+        "Logo": "JABS.jpg"
     },
     {
         "Id": "JSPR",
         "Name": "Lập trình JavaScript",
-        "Logo": "JSPR.png"
+        "Logo": "JSPR.jpg"
     },
     {
         "Id": "LAYO",
@@ -77,12 +77,12 @@
     {
         "Id": "MOWE",
         "Name": "Thiết kế web cho điện thoại di động",
-        "Logo": "MOWE.png"
+        "Logo": "MOWE.jpg"
     },
     {
         "Id": "PHPP",
         "Name": "Lập trình PHP",
-        "Logo": "PHPP.png"
+        "Logo": "PHPP.jpg"
     },
     {
         "Id": "PMAG",
@@ -92,7 +92,7 @@
     {
         "Id": "VBPR",
         "Name": "Lập trình VB.NET",
-        "Logo": "VBPR.png"
+        "Logo": "VBPR.jpg"
     },
     {
         "Id": "WEBU",

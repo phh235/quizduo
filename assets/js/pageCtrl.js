@@ -1,8 +1,9 @@
 var myApp = angular.module("myApp", ["ngRoute"]);
 myApp.controller("myCtrl", function ($scope, $http, $rootScope, $location) {
+  // subject control
   $scope.list_subject = [];
-  $http.get("db/Subjects.js").then(function (reponse) {
-    $scope.list_subject = reponse.data;
+  $http.get("db/Subjects.js").then(function (response) {
+    $scope.list_subject = response.data;
     console.log($scope.list_subject);
   });
   $scope.start = 0;
@@ -29,7 +30,7 @@ myApp.controller("myCtrl", function ($scope, $http, $rootScope, $location) {
       // Handle error response
       console.error("Error changing password", error);
     });
-
+  // end subject control
   $scope.logout = function () {
     Swal.fire({
       position: "top-end",
@@ -93,8 +94,12 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
     } else {
       // Hiển thị SweetAlert với thông báo email không tồn tại
       Swal.fire({
+        imageUrl: "https://design.duolingo.com/60aa5cd702b56a7a5e6b.svg",
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
         title: "Email không tồn tại trong hệ thống",
-        icon: "error",
+        icon: "warning",
         confirmButtonText: "OK",
       });
     }
@@ -191,10 +196,10 @@ myApp.config(function ($routeProvider) {
     })
     .when("/about", {
       templateUrl: "assets/html/about.html",
-      controller: "loginCtrl",
     })
     .when("/signIn", {
       templateUrl: "assets/html/login.html",
+      controller: "loginCtrl",
     })
     .when("/signUp", {
       templateUrl: "assets/html/register.html",
