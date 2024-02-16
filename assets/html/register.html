@@ -3,7 +3,11 @@
   <div class="row justify-content-center">
     <div
       class="col-lg-4 col-md-6 col-sm-8 col-12 py-5 rounded-4"
-      style="background-color: rgba(225, 240, 218, 0.5); box-shadow: 0 7px 0 #bfd8af; border: 3px solid #bfd8af"
+      style="
+        background-color: rgba(225, 240, 218, 0.5);
+        box-shadow: 0 7px 0 #bfd8af;
+        border: 3px solid #bfd8af;
+      "
     >
       <h1 style="font-weight: 700; color: #58cc02" class="text-center py-1 mb-5">Đăng ký</h1>
       <div class="col fw-bold">
@@ -79,25 +83,16 @@
           <div class="mb-3">
             <label for="inputPassword5" class="form-label fw-bold">Giới tính</label>
 
-            <div class="form-check">
+            <div class="form-check" ng-repeat="gender in genderOption">
               <input
                 class="form-check-input"
                 type="radio"
                 name="flexRadioDefault"
                 id="flexRadioDefault1"
+                value="{{gender}}"
                 ng-model="gender"
               />
-              <label class="form-check-label" for="flexRadioDefault1"> Nam </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="flexRadioDefault"
-                id="flexRadioDefault2"
-                ng-model="gender"
-              />
-              <label class="form-check-label" for="flexRadioDefault2"> Nữ </label>
+              <label class="form-check-label" for="flexRadioDefault1"> {{gender}} </label>
             </div>
           </div>
           <label for="inputPassword5" class="form-label fw-bold">Ngày sinh</label>
@@ -105,12 +100,12 @@
             type="date"
             id="inputPassword5"
             class="form-control formCtrl mb-2 fw-bold"
-            name="date"
+            name="birthday"
             aria-describedby="passwordHelpBlock"
             ng-model="birthday"
             required
           />
-          <i class="alert1" ng-show="formSignup.date.$invalid">Vui lòng chọn ngày sinh</i>
+          <i class="alert1" ng-show="formSignup.birthday.$invalid">Vui lòng chọn ngày sinh</i>
           <div class="mb-3 mt-3">
             <label for="schoolFee" class="form-label fw-bold">Học phí</label>
             <input
@@ -125,14 +120,21 @@
           </div>
           <div class="mb-3">
             <label for="marks" class="form-label fw-bold">Điểm</label>
-            <input type="text" id="marks" name="mark" class="form-control formCtrl mb-2 fw-bold" ng-model="marks"  required/>
+            <input
+              type="text"
+              id="marks"
+              name="mark"
+              class="form-control formCtrl mb-2 fw-bold"
+              ng-model="marks"
+              required
+            />
             <i class="alert1" ng-show="formSignup.mark.$invalid">Vui lòng nhập điểm</i>
           </div>
           <div class="text-center">
             <button
               type="submit"
               class="btn btn-primary fw-bold px-5 fs-5 mt-3"
-              style="background-color: #58cc02;"
+              style="background-color: #58cc02"
               ng-click="postdata()"
             >
               Đăng ký

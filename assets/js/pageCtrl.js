@@ -41,10 +41,11 @@ myApp.controller("myCtrl", function ($scope, $http, $rootScope, $location) {
       imageHeight: 200,
       imageAlt: "Custom image",
       showConfirmButton: false,
-      timer: 1700,
+      timer: 1000,
+      allowOutsideClick: false, // don't allow click outside
     });
     sessionStorage.removeItem("username");
-    $rootScope.isLoggedIn = false;
+    sessionStorage.removeItem("isLoggedIn");
     window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
   };
 
@@ -82,14 +83,18 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
       // Hiển thị SweetAlert với thông báo password
       Swal.fire({
         title: "Mật khẩu của bạn là:",
-        text: user.password,
-        imageUrl: "https://design.duolingo.com/6b59833e80abfee5a4e0.svg",
+        html:
+          "<strong><span style='color: #58c002; font-size: 30px'>" +
+          user.password +
+          "</span></strong>",
+        imageUrl: "https://design.duolingo.com/f432eb8c3e03de216d20.svg",
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: "Custom image",
         icon: "info",
         confirmButtonText: "OK",
         confirmButtonColor: "#3085d6",
+        allowOutsideClick: false, // don't allow click outside
       });
     } else {
       // Hiển thị SweetAlert với thông báo email không tồn tại
@@ -101,6 +106,7 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
         title: "Email không tồn tại trong hệ thống",
         icon: "warning",
         confirmButtonText: "OK",
+        allowOutsideClick: false, // don't allow click outside
       });
     }
   };
@@ -217,23 +223,31 @@ myApp.config(function ($routeProvider) {
 });
 
 myApp.controller("registerCtrl", function ($scope, $http, $location) {
-  $scope.postdata = function (data) {
+  $scope.genderOption = ["Nam", "Nữ"];
+  $scope.selectGender = $scope.genderOption[0];
+
+  $scope.postdata = function () {
     var data = {
+      id: Math.random(),
       username: $scope.username,
       password: $scope.password,
       fullname: $scope.fullname,
       email: $scope.email,
-      gender: $scope.gender,
+      gender: $scope.gender == "Nam" ? "true" : "false",
       birthday: $scope.birthday,
       schoolfee: $scope.schoolfee,
       marks: $scope.marks,
-      id: Math.random(),
     };
+    console.log(data);
     $http.post("http://localhost:3000/listStudent", data).then(
       function (res) {
         Swal.fire({
           title: "Đăng ký thành công",
           icon: "success",
+          imageUrl: "https://design.duolingo.com/4690270d396c7ee17c14.svg",
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: "Custom image",
           confirmButtonColor: "#3085d6",
           confirmButtonText: "OK",
         }).then((result) => {
@@ -241,6 +255,7 @@ myApp.controller("registerCtrl", function ($scope, $http, $location) {
           if (result.isConfirmed) {
             // Thực hiện chuyển hướng hoặc hành động khác tại đây
             window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
+            $scope.$apply();
           }
         });
       },
@@ -262,6 +277,7 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
       icon: "warning",
       confirmButtonText: "OK",
       confirmButtonColor: "#3085d6",
+      allowOutsideClick: false, // don't allow click outside
     }).then((result) => {
       if (result.isConfirmed) {
         // Nếu người dùng ấn "OK", chuyển trang
@@ -580,7 +596,7 @@ myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
   $scope.login = function () {
     // $scope.currentUser = "";
     $rootScope.currentUser = $scope.username;
-    $rootScope.isLoggedIn = true;
+
     for (var i = 0; i < $scope.listStudent.length; i++) {
       if (
         $scope.username == $scope.listStudent[i].username &&
@@ -592,8 +608,8 @@ myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
         $scope.loggedInUser = $scope.username;
 
         isLoggedIn = true;
-        // $location.path("/home");
-        sessionStorage.setItem("username", $scope.username);
+        // // $location.path("/home");
+        // sessionStorage.setItem("username", $scope.username);
         break;
       }
     }
@@ -607,12 +623,13 @@ myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
         icon: "success",
         // confirmButtonColor: "#3085d6",
         showConfirmButton: false,
+        allowOutsideClick: false, // don't allow click outside
         html: `
     <div class="custom-html">
       Chuyển trang sau <b class="second"></b> giây.
     </div>
   `,
-        timer: 3000,
+        timer: 2000,
         timerProgressBar: false,
         didOpen: () => {
           const timer = Swal.getPopup().querySelector("b");
@@ -628,13 +645,37 @@ myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
       // Chờ 1 giây trước khi chuyển trang
       setTimeout(function () {
         window.location.href = "http://127.0.0.1:5502/index.html#!home";
-      }, 3000);
+      }, 2000);
+      $rootScope.isLoggedIn = true;
+      sessionStorage.setItem("isLoggedIn", $rootScope.isLoggedIn);
+      $rootScope.getName = sessionStorage.getItem("username");
+      $rootScope.student = $rootScope.getName;
     } else {
       Swal.fire({
         title: "Tên đăng nhập hoặc mật khẩu không đúng!",
         icon: "error",
       });
+      $rootScope.isLoggedIn = false;
     }
     $scope.checkLoginStatus();
   };
+});
+myApp.run(function ($rootScope) {
+  $rootScope.$on("$routeChangeStart", function () {
+    $rootScope.loading = true;
+  });
+  $rootScope.$on("$routeChangeSuccess", function () {
+    $rootScope.loading = false;
+  });
+  $rootScope.$on("$routeChangeError", function () {
+    $rootScope.loading = false;
+    alert("Lỗi");
+  });
+  $rootScope.isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
+  // $rootScope.student = sessionStorage.getItem("username") === $rootScope.getName;
+  if (sessionStorage.getItem("username") === $rootScope.getName) {
+    $rootScope.student = $rootScope.getName;
+  } else {
+    $rootScope.student = sessionStorage.getItem("username");
+  }
 });

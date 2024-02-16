@@ -34,23 +34,26 @@
       "id": "3"
     },
     {
-      "id": "0.3089375137999679",
+      "id": 0.746002117281604,
       "username": "phh235",
       "password": "123",
       "fullname": "Phan Huy Hoàng",
       "email": "hoangaatrox23504@gmail.com",
-      "schoolfee": "0",
-      "marks": "0"
+      "gender": "false",
+      "birthday": "2004-05-22T17:00:00.000Z",
+      "schoolfee": "123",
+      "marks": "123"
     },
     {
-      "id": "0.7949703644290009",
+      "id": 0.014177035697849227,
       "username": "123",
       "password": "123",
-      "fullname": "123",
-      "email": "hoangphps30236@fpt.edu.vn",
-      "birthday": "2024-01-11T17:00:00.000Z",
-      "schoolfee": "0",
-      "marks": "0"
+      "fullname": "Andrew Hoang",
+      "email": "andrewh2305@gmail.com",
+      "gender": "false",
+      "birthday": "2012-12-11T17:00:00.000Z",
+      "schoolfee": "1212",
+      "marks": "1212"
     }
   ]
 }
