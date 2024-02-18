@@ -58,10 +58,10 @@
             <i class="alert1" ng-show="formSignup.email.$invalid">Email phải bao gồm @gmail.com</i>
           </div>
           <div class="mb-3">
-            <label for="inputPassword5" class="form-label fw-bold">Mật khẩu</label>
+            <label for="password" class="form-label fw-bold">Mật khẩu</label>
             <input
               type="password"
-              id="inputPassword5"
+              id="password"
               name="password"
               class="form-control formCtrl mb-2 fw-bold"
               ng-model="password"
@@ -72,13 +72,17 @@
             >
           </div>
           <div class="mb-3">
-            <label for="inputPassword6" class="form-label fw-bold">Nhập lại mật khẩu</label>
+            <label for="confirmPassword" class="form-label fw-bold">Xác nhận mật khẩu</label>
             <input
               type="password"
-              id="inputPassword6"
+              id="confirmPassword"
+              name="confirmPassword"
               class="form-control formCtrl mb-2 fw-bold"
-              ng-model="password"
+              ng-model="confirmPassword"
             />
+            <i class="alert1" ng-show="formSignup.confirmPassword.$invalid"
+              >Vui lòng xác nhận mật khẩu</i
+            >
           </div>
           <div class="mb-3">
             <label for="inputPassword5" class="form-label fw-bold">Giới tính</label>
@@ -132,7 +136,6 @@
           </div>
           <div class="text-center">
             <button
-              type="submit"
               class="btn btn-primary fw-bold px-5 fs-5 mt-3"
               style="background-color: #58cc02"
               ng-click="postdata()"

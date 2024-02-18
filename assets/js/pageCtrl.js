@@ -120,6 +120,10 @@ myApp.controller("changePasswordCtrl", function ($scope, $http) {
     Swal.fire({
       title: "Bạn cần phải đăng nhập!!!",
       icon: "error",
+      imageUrl: "https://design.duolingo.com/6b59833e80abfee5a4e0.svg",
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: "Custom image",
       confirmButtonText: "OK",
       confirmButtonColor: "#3085d6",
       allowOutsideClick: false, // don't allow click outside
@@ -226,8 +230,15 @@ myApp.config(function ($routeProvider) {
 myApp.controller("registerCtrl", function ($scope, $http, $location) {
   $scope.genderOption = ["Nam", "Nữ"];
   $scope.selectGender = $scope.genderOption[0];
-
-  $scope.postdata = function () {
+  $scope.postdata = function (event) {
+    if ($scope.password !== $scope.confirmPassword) {
+      Swal.fire({
+        title: "Mật khẩu không khớp",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
     var data = {
       id: Math.random(),
       username: $scope.username,
@@ -245,17 +256,14 @@ myApp.controller("registerCtrl", function ($scope, $http, $location) {
         Swal.fire({
           title: "Đăng ký thành công",
           icon: "success",
-          imageUrl: "https://design.duolingo.com/4690270d396c7ee17c14.svg",
-          imageWidth: 400,
-          imageHeight: 200,
-          imageAlt: "Custom image",
           confirmButtonColor: "#3085d6",
           confirmButtonText: "OK",
         }).then((result) => {
           // Nếu người dùng ấn OK
           if (result.isConfirmed) {
             // Thực hiện chuyển hướng hoặc hành động khác tại đây
-            window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
+            // window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
+            $location.url("/signIn");
             $scope.$apply();
           }
         });
@@ -267,6 +275,7 @@ myApp.controller("registerCtrl", function ($scope, $http, $location) {
         });
       }
     );
+    event.preventDefault();
   };
 });
 
@@ -276,6 +285,10 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
     Swal.fire({
       title: "Bạn cần phải đăng nhập!!!",
       icon: "warning",
+      imageUrl: "https://design.duolingo.com/6b59833e80abfee5a4e0.svg",
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: "Custom image",
       confirmButtonText: "OK",
       confirmButtonColor: "#3085d6",
       allowOutsideClick: false, // don't allow click outside

@@ -171,20 +171,20 @@
     new PureCounter();
   });
 
-  // // nav menu
-  // document.addEventListener("DOMContentLoaded", function () {
-  //   var navLinks = document.querySelectorAll(".nav-link");
+  // nav menu
+  document.addEventListener("DOMContentLoaded", function () {
+    var navLinks = document.querySelectorAll(".nav-link");
 
-  //   navLinks.forEach(function (link) {
-  //     link.addEventListener("click", function () {
-  //       // Đặt màu cho tất cả nav-link về màu mặc định
-  //       navLinks.forEach(function (otherLink) {
-  //         otherLink.style.color = "#000"; // Đặt màu theo mong muốn
-  //       });
+    navLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        // Đặt màu cho tất cả nav-link về màu mặc định
+        navLinks.forEach(function (otherLink) {
+          otherLink.style.color = "#000"; // Đặt màu theo mong muốn
+        });
 
-  //       // Đặt màu cho nav-link được kích hoạt
-  //       link.style.color = "#58cc02"; // Đặt màu mới khi nav-link được kích hoạt
-  //     });
-  //   });
-  // });
+        // Đặt màu cho nav-link được kích hoạt
+        link.style.color = "#58cc02"; // Đặt màu mới khi nav-link được kích hoạt
+      });
+    });
+  });
 })();
