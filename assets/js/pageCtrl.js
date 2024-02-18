@@ -122,6 +122,7 @@ myApp.controller("changePasswordCtrl", function ($scope, $http) {
       icon: "error",
       confirmButtonText: "OK",
       confirmButtonColor: "#3085d6",
+      allowOutsideClick: false, // don't allow click outside
     }).then((result) => {
       if (result.isConfirmed) {
         // Nếu người dùng ấn "OK", chuyển trang
