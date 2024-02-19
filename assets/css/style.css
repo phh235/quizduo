@@ -17,57 +17,11 @@
   font-family: "Google Sans";
   src: url("https://github.com/phh235/font/blob/master/Font%20vi%E1%BB%87t%20h%C3%B3a%20Google%20Sans/GoogleSansTTF/GoogleSans-Regular.ttf");
 }
-/* CURSOR ANIMATION */
-/* .cursor-dot {
-  width: 20px;
-  height: 20px;
-  background-image: url(/assets/img/pointers/default.svg);
-  background-repeat: no-repeat;
-   position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 999;
-
-}
-.cursor-outline {
-  width: 50px;
-  height: 50px;
-  border: 2px solid #b0ff92;
-}
-.cursor-outline {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  z-index: 999;
-  mix-blend-mode: difference;
-  pointer-events: none;
-}
-a:hover {
-  cursor: none;
-}
-input:hover {
-  cursor: none;
-}
-textarea:hover {
-  cursor: none;
-}
-button:hover {
-  cursor: none;
-} */
-/* END CURSOR ANIMATION */
 body {
   font-family: "Quicksand", sans-serif;
   color: #313030;
-  /* cursor: none; */
   overflow-x: hidden;
 }
-/* ::selection {
-  background-color: #58cc02;
-  color: #fff;
-} */
 
 a {
   color: #58cc02;
@@ -751,7 +705,8 @@ section {
   background: url("/assets/img/1dacb3e2a288440001755c6a30e5ec60\ \(1\).svg") center center no-repeat;
   background-size: cover;
   min-height: 500px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   border-radius: 20px;
 }
 
@@ -921,7 +876,6 @@ section {
   border-radius: 15px;
   font-family: "Quicksand";
   font-weight: bold;
-  
 }
 
 .values .card-body {
@@ -1147,7 +1101,6 @@ section {
 .contact .php-email-form textarea {
   padding: 12px 15px;
 }
-
 
 @keyframes animate-loading {
   0% {
@@ -1393,7 +1346,7 @@ section {
   border-radius: 17px;
   background-color: #58cc02;
   box-shadow: 0 5px 0 #58a700;
-  transition: filter .2s ease;
+  transition: filter 0.2s ease;
 }
 
 .btn-primary:hover {
@@ -1415,7 +1368,7 @@ section {
   border-radius: 17px;
   background-color: #1cb0f6;
   box-shadow: 0 5px 0 #2b70c9;
-  transition: filter .2s ease;
+  transition: filter 0.2s ease;
 }
 
 .btn-primary1:hover {

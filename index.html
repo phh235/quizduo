@@ -60,8 +60,8 @@
 
   <body ng-app="myApp" ng-controller="myCtrl">
     <!-- Custom cursor -->
-    <!-- <div class="cursor-dot" data-cursor-dot></div>
-    <div class="cursor-outline" data-cursor-outline></div> -->
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
     <!--  Header  -->
     <div ng-include="'/assets/html/header.html'"></div>
     <!--  End Header  -->
@@ -86,28 +86,5 @@
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/pageCtrl.js"></script>
-    <!-- Custom cursor script -->
-    <!-- <script>
-        const cursorDot = document.querySelector("[data-cursor-dot]");
-        const cursorOutline = document.querySelector("[data-cursor-outline]");
-        window.addEventListener("mousemove", function (e) {
-          const posX = e.clientX;
-          const posY = e.clientY;
-
-          cursorDot.style.left = `${posX}px`;
-          cursorDot.style.top = `${posY}px`;
-
-          // cursorOutline.style.left = `${posX}px`;
-          // cursorOutline.style.top = `${posY}px`;
-
-          cursorOutline.animate(
-            {
-              left: `${posX}px`,
-              top: `${posY}px`,
-            },
-            { duration: 400, fill: "forwards" }
-          );
-        });
-    </script> -->
   </body>
 </html>

@@ -42,7 +42,7 @@ myApp.controller("myCtrl", function ($scope, $http, $rootScope, $location) {
       imageAlt: "Custom image",
       showConfirmButton: false,
       timer: 1000,
-      allowOutsideClick: false, // don't allow click outside
+      allowOutsideClick: false, // Không cho click ra ngoài
     });
     sessionStorage.removeItem("username");
     sessionStorage.removeItem("isLoggedIn");
@@ -94,7 +94,7 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
         icon: "info",
         confirmButtonText: "OK",
         confirmButtonColor: "#3085d6",
-        allowOutsideClick: false, // don't allow click outside
+        allowOutsideClick: false, // Không cho click ra ngoài
       });
     } else {
       // Hiển thị SweetAlert với thông báo email không tồn tại
@@ -106,7 +106,7 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
         title: "Email không tồn tại trong hệ thống",
         icon: "warning",
         confirmButtonText: "OK",
-        allowOutsideClick: false, // don't allow click outside
+        allowOutsideClick: false, // Không cho click ra ngoài
       });
     }
   };
@@ -126,7 +126,7 @@ myApp.controller("changePasswordCtrl", function ($scope, $http) {
       imageAlt: "Custom image",
       confirmButtonText: "OK",
       confirmButtonColor: "#3085d6",
-      allowOutsideClick: false, // don't allow click outside
+      allowOutsideClick: false, // Không cho click ra ngoài
     }).then((result) => {
       if (result.isConfirmed) {
         // Nếu người dùng ấn "OK", chuyển trang
@@ -291,7 +291,7 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
       imageAlt: "Custom image",
       confirmButtonText: "OK",
       confirmButtonColor: "#3085d6",
-      allowOutsideClick: false, // don't allow click outside
+      allowOutsideClick: false, //Không cho click ra ngoài
     }).then((result) => {
       if (result.isConfirmed) {
         // Nếu người dùng ấn "OK", chuyển trang
@@ -315,15 +315,13 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
     $scope.listQuestions = [];
     $scope.currentIndex = 0;
     $scope.totalQuestions = 0;
-    $scope.initSelected = null;
-    $scope.first = true;
-    $scope.last = false;
+    // $scope.initSelected = null;
+    // $scope.first = true;
+    // $scope.last = false;
     $scope.historyQuestionRight = [];
     $scope.historyQuestionWrong = [];
     $scope.currentQuestionWrong = 0;
-    $scope.timePerSec = 0;
     $scope.time = 0;
-    $scope.percent;
     $scope.show = false;
   }
   $scope.next = function () {
@@ -340,7 +338,7 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
     }
     getQuestion();
   };
-  function getApi() {
+  function getQuestions() {
     $http.get("db/Quizs/" + $scope.idMH + ".js").then(
       function (d) {
         $scope.caccauhoi = d.data;
@@ -391,13 +389,6 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
     $scope.isAnswerCorrect = $scope.rightAnswer === select;
     var answers = document.getElementById(select);
     var allAnswer = document.getElementsByClassName("service-item");
-    // if ($scope.isAnswerCorrect) {
-    //     answers.style.transition = 'background-color 0.3s';
-    //     answers.style.backgroundColor = '#65B741';
-    // } else {
-    //     answers.style.transition = 'background-color 0.3s';
-    //     answers.style.backgroundColor = '#D71313';
-    // }
     if ($scope.selectedButton.length === 0) {
       $scope.selectedButton.push({ id: $scope.idOfCurrentQuestion, answers: select });
     } else {
@@ -565,10 +556,10 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
         }
       });
       if (flag === false) {
-        getApi();
+        getQuestions();
       }
     } else {
-      getApi();
+      getQuestions();
     }
   }
   $scope.showAnswer = () => {
@@ -637,7 +628,7 @@ myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
         icon: "success",
         // confirmButtonColor: "#3085d6",
         showConfirmButton: false,
-        allowOutsideClick: false, // don't allow click outside
+        allowOutsideClick: false, // Không cho click ra ngoài
         html: `
     <div class="custom-html">
       Chuyển trang sau <b class="second"></b> giây.
