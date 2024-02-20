@@ -4,17 +4,17 @@
     class="card"
     ng-if="handed == false"
     style="
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+      box-shadow: 0 5px 0 #e5e5e5; border: 3px solid #e5e5e5;
       padding: 10px;
       min-width: 1280px;
       border-radius: 20px;
     "
   >
     <div class="card-header text-center" style="min-height: 230px">
-      <p class="text-danger fw-bold fs-5" id="time">Thời gian làm bài: {{timeHanded}}</p>
+      <p class="text-danger fw-bold fs-4" id="time">Thời gian còn lại: {{timeHanded}}</p>
       <p class="fw-bold fs-4 mt-5">{{currentIndex + 1}}. {{currentQuestion.Text}}</p>
     </div>
-    <div class="card-body" style="min-height: 230px; font-weight: 600;">
+    <div class="card-body" style="min-height: 230px; font-weight: 600">
       <div class="card-text">
         <div class="row">
           <div
@@ -98,7 +98,7 @@
       </div>
     </div>
     <!-- <div class="card-footer text-muted">Điểm: {{ch.Marks}}</div> -->
-    <div class="card-footer text-center" style="min-height: 60px; margin-top: 80px">
+    <div class="card-footer text-center" style="min-height: 60px; margin-top: 60px; margin-bottom: 20px;">
       <button
         class="btn btn-primary fw-bold"
         ng-click="prev()"
@@ -128,7 +128,10 @@
     ng-if="handed === true"
     style="box-shadow: 0 5px 0 #e5e5e5; border: 3px solid #e5e5e5; border-radius: 15px"
   >
-    <p class="h3 wow fadeInUp d-flex justify-content-center mt-4 mb-4 h3 fw-bold" data-wow-delay="0.3s">
+    <p
+      class="h3 wow fadeInUp d-flex justify-content-center mt-4 mb-4 h3 fw-bold"
+      data-wow-delay="0.3s"
+    >
       Bạn đã làm xong bộ câu hỏi này
     </p>
     <div class="row g-4 d-flex justify-content-between mb-3 p-5">
@@ -153,8 +156,15 @@
           border: 3px solid #bfd8af;
         "
       >
-        <label for="" class="mt-2 h5 text-black fw-bold" data-wow-delay="0.3s">Câu đúng </label> <br>
-        <label for="" class="mt-2 h5 text-black fw-bold"><span class="fs-1" ng-class="{'text-success': countPoint > 5, 'text-danger': countPoint <= 5}">{{countPoint}}</span></label>
+        <label for="" class="mt-2 h5 text-black fw-bold" data-wow-delay="0.3s">Câu đúng </label>
+        <br />
+        <label for="" class="mt-2 h5 text-black fw-bold"
+          ><span
+            class="fs-1"
+            ng-class="{'text-success': countPoint > 5, 'text-danger': countPoint <= 5}"
+            >{{countPoint}}</span
+          ></label
+        >
       </div>
       <div
         class="col-5 rounded-4 text-center"
@@ -166,7 +176,13 @@
         "
       >
         <label for="" class="mt-2 h5 text-black fw-bold">Điểm số:</label><br />
-        <label for="" class="mt-2 h5 text-black fw-bold"><span class="fs-1" ng-class="{'text-success': totalPoint > 5, 'text-danger': totalPoint <= 5}">{{totalPoint}}</span></label>
+        <label for="" class="mt-2 h5 text-black fw-bold"
+          ><span
+            class="fs-1"
+            ng-class="{'text-success': totalPoint > 5, 'text-danger': totalPoint <= 5}"
+            >{{totalPoint}}</span
+          ></label
+        >
       </div>
     </div>
     <div class="">
@@ -191,7 +207,11 @@
         <div class="pt-3">
           <div class="h-100 p-4 border rounded-3 s-color">
             <h4 class="mb-3 fw-bold">{{questions.Text}}</h4>
-            <p ng-repeat="single in questions.Answers" ng-if="single.Id === questions.AnswerId" class="fw-bold">
+            <p
+              ng-repeat="single in questions.Answers"
+              ng-if="single.Id === questions.AnswerId"
+              class="fw-bold"
+            >
               Đáp án đúng: <span class="fw-bold">{{single.Text}}</span>
             </p>
             <p

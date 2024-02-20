@@ -2,7 +2,7 @@
   "listStudent": [
     {
       "username": "teonv",
-      "password": "iloveyou",
+      "password": "123",
       "fullname": "Nguyễn Văn Tèo",
       "email": "teonv@fpt.edu.vn",
       "gender": "true",
@@ -54,6 +54,17 @@
       "birthday": "2012-12-11T17:00:00.000Z",
       "schoolfee": "1212",
       "marks": "1212"
+    },
+    {
+      "id": 0.5774729602035822,
+      "username": "ngo3k",
+      "password": "1234",
+      "fullname": "ngo ba kha",
+      "email": "ngo3k@gmail.com",
+      "gender": "false",
+      "birthday": "2024-02-20T17:00:00.000Z",
+      "schoolfee": "123",
+      "marks": "123"
     }
   ]
 }

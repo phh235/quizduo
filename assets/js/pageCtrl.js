@@ -27,7 +27,6 @@ myApp.controller("myCtrl", function ($scope, $http, $rootScope, $location) {
       $scope.checkLoginStatus();
     })
     .catch(function (error) {
-      // Handle error response
       console.error("Error changing password", error);
     });
   // end subject control
@@ -61,7 +60,6 @@ myApp.controller("myCtrl", function ($scope, $http, $rootScope, $location) {
 
 myApp.controller("forgotCtrl", function ($scope, $http) {
   $scope.listStudent = [];
-
   // Lấy dữ liệu sinh viên từ file JSON
   $http.get("db/Students.json").then(
     function (response) {
@@ -71,14 +69,11 @@ myApp.controller("forgotCtrl", function ($scope, $http) {
       console.error("Lỗi khi lấy dữ liệu sinh viên:", error);
     }
   );
-
   // Hàm xử lý khi nhấn nút "Xác nhận"
   $scope.forgot = function () {
     console.log("Email:", $scope.email);
-
     // Tìm sinh viên có email trùng khớp
     const user = $scope.listStudent.find((s) => s.email === $scope.email);
-
     if (user) {
       // Hiển thị SweetAlert với thông báo password
       Swal.fire({
@@ -129,7 +124,6 @@ myApp.controller("changePasswordCtrl", function ($scope, $http) {
       allowOutsideClick: false, // Không cho click ra ngoài
     }).then((result) => {
       if (result.isConfirmed) {
-        // Nếu người dùng ấn "OK", chuyển trang
         window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
       }
     });
@@ -139,34 +133,31 @@ myApp.controller("changePasswordCtrl", function ($scope, $http) {
     // Check if passwords match
     if ($scope.newPassword !== $scope.confirmPassword) {
       Swal.fire({
-        title: "Mật khẩu không khớp",
+        title: "Mật khẩu xác nhận không khớp",
         icon: "warning",
         confirmButtonText: "OK",
+        confirmButtonColor: "#3085d6",
+        allowOutsideClick: false, // Không cho click ra ngoài
       });
       return;
     }
-    // Find the user with the provided email
+    // Tìm người dùng với email được cung cấp
     const user = $scope.listStudent.find((s) => s.email === $scope.getStudent.email);
 
     if (user) {
-      // Prepare data to send to JSON Server
       const data = {
         id: user.id,
         username: user.username,
         password: $scope.newPassword,
       };
 
-      // Assume that the JSON Server endpoint for changing passwords is different
-      // Adjust the endpoint according to your JSON Server setup
       $http.patch(`http://localhost:3000/listStudent/` + data.id, data).then(function (response) {
-        // Handle success response
         Swal.fire({
           title: "Đổi mật khẩu thành công",
           icon: "success",
           confirmButtonText: "OK",
         }).then((result) => {
           if (result.isConfirmed) {
-            // Nếu người dùng ấn "OK", chuyển trang
             window.location.href = "http://127.0.0.1:5502/index.html#!/home";
           }
         });
@@ -184,15 +175,11 @@ myApp.config(function ($routeProvider) {
     })
     .when("/subject", {
       templateUrl: "assets/html/subject.html",
-      // controller: "subjectCtrl",
     })
     .when("/quiz/:idMH/:tenMH", {
       templateUrl: "assets/html/quiz.html",
       controller: "quizCtrl",
     })
-    // .when("/account", {
-    //   templateUrl: "assets/html/account.html",
-    // })
     .when("/user:accountId", {
       templateUrl: "assets/html/user_details.html",
     })
@@ -259,11 +246,9 @@ myApp.controller("registerCtrl", function ($scope, $http, $location) {
           confirmButtonColor: "#3085d6",
           confirmButtonText: "OK",
         }).then((result) => {
-          // Nếu người dùng ấn OK
           if (result.isConfirmed) {
-            // Thực hiện chuyển hướng hoặc hành động khác tại đây
-            // window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
-            $location.url("/signIn");
+            window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
+            // $location.url("/assets/html/login.html");
             $scope.$apply();
           }
         });
@@ -280,6 +265,7 @@ myApp.controller("registerCtrl", function ($scope, $http, $location) {
 });
 
 // quiz
+
 myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
   if (sessionStorage.getItem("username") === null) {
     Swal.fire({
@@ -294,7 +280,6 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
       allowOutsideClick: false, //Không cho click ra ngoài
     }).then((result) => {
       if (result.isConfirmed) {
-        // Nếu người dùng ấn "OK", chuyển trang
         window.location.href = "http://127.0.0.1:5502/index.html#!/signIn";
       }
     });
@@ -315,9 +300,6 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
     $scope.listQuestions = [];
     $scope.currentIndex = 0;
     $scope.totalQuestions = 0;
-    // $scope.initSelected = null;
-    // $scope.first = true;
-    // $scope.last = false;
     $scope.historyQuestionRight = [];
     $scope.historyQuestionWrong = [];
     $scope.currentQuestionWrong = 0;
@@ -343,7 +325,7 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
       function (d) {
         $scope.caccauhoi = d.data;
         // $scope.caccauhoi.sort(() => Math.random() - 0.5);
-        // console.log($scope.caccauhoi);
+        // console.log($scope.caccauhoi)
         $scope.caccauhoi.map((item) => {
           if ($scope.listQuestions.length < 10) {
             var random = Math.floor(Math.random() * $scope.caccauhoi.length);
@@ -527,14 +509,6 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
     console.log($scope.historyQuestionWrong);
     $scope.currentQuestionWrong = $scope.historyQuestionWrong.length - 1;
     $scope.historyAnyQuestion = localdata.filter((item) => item.questionId);
-    // $scope.timePerSec = Math.floor($scope.time / 10);
-    // $scope.percent =
-    //   (($scope.listQuestions.length -
-    //     ($scope.listQuestions.length - $scope.listOfRightAnswer.length)) /
-    //     $scope.listQuestions.length) *
-    //     100 +
-    //   "%";
-    // console.log($scope.percent);
   };
   $scope.again = () => {
     localStorage.removeItem($scope.idMH);
@@ -573,7 +547,7 @@ myApp.controller("quizCtrl", function ($scope, $http, $routeParams, $interval) {
     }
   };
   $scope.newTime = () => {
-    //15 minute
+    // set tgian 15 phút
     $scope.intervalTime = $interval(function () {
       $scope.time++;
       $scope.timeHanded = 900 - $scope.time;
@@ -611,14 +585,12 @@ myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
         sessionStorage.setItem("username", $scope.username);
         // Cập nhật loggedInUser khi đăng nhập
         $scope.loggedInUser = $scope.username;
-
-        isLoggedIn = true;
-        // // $location.path("/home");
+        $rootScope.isLoggedIn = true;
         // sessionStorage.setItem("username", $scope.username);
         break;
       }
     }
-    if (isLoggedIn) {
+    if ($rootScope.isLoggedIn) {
       Swal.fire({
         title: "Đăng nhập thành công",
         imageUrl: "https://design.duolingo.com/e69974f04b05dcf07f2a.svg",
@@ -626,14 +598,13 @@ myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
         imageHeight: 200,
         imageAlt: "Custom image",
         icon: "success",
-        // confirmButtonColor: "#3085d6",
         showConfirmButton: false,
         allowOutsideClick: false, // Không cho click ra ngoài
         html: `
-    <div class="custom-html">
-      Chuyển trang sau <b class="second"></b> giây.
-    </div>
-  `,
+                <div class="custom-html">
+                  Chuyển trang sau <b class="second"></b> giây.
+                </div>
+              `,
         timer: 2000,
         timerProgressBar: false,
         didOpen: () => {
@@ -657,14 +628,20 @@ myApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
       $rootScope.student = $rootScope.getName;
     } else {
       Swal.fire({
+        imageUrl: "https://design.duolingo.com/2c82efcd38d61a9bd45e.svg",
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
         title: "Tên đăng nhập hoặc mật khẩu không đúng!",
         icon: "error",
+        allowOutsideClick: false, // Không cho click ra ngoài
       });
       $rootScope.isLoggedIn = false;
     }
     $scope.checkLoginStatus();
   };
 });
+
 myApp.run(function ($rootScope) {
   $rootScope.$on("$routeChangeStart", function () {
     $rootScope.loading = true;
@@ -677,7 +654,6 @@ myApp.run(function ($rootScope) {
     alert("Lỗi");
   });
   $rootScope.isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
-  // $rootScope.student = sessionStorage.getItem("username") === $rootScope.getName;
   if (sessionStorage.getItem("username") === $rootScope.getName) {
     $rootScope.student = $rootScope.getName;
   } else {
